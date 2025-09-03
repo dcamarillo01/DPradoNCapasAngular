@@ -1,0 +1,13 @@
+﻿:host {
+  display: flex;
+  min-height: 100vh;   /* altura completa */
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;             /* ocupa el espacio sobrante */
+}
+
+app-footer {
+  margin-top: auto;    /* empuja el footer al fondo */
+}
