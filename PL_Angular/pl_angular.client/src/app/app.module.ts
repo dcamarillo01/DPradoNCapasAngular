@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { UsuarioGetAllComponent } from './Usuario/Componentes/usuario-get-all/usuario-get-all.component';
+import { UsuarioFormComponent } from './Usuario/Componentes/usuario-form/usuario-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    UsuarioGetAllComponent
+    UsuarioGetAllComponent,
+    UsuarioFormComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,

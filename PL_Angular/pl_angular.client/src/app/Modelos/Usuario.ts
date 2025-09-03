@@ -4,7 +4,7 @@ import {Direccion} from './Direccion';
 
 export class Usuario{
     
-idUsuario?: number;
+idUsuario!: number;
 nombre?: string;
 apellidoPaterno?: string;
 apellidoMaterno?: string;
@@ -25,5 +25,4 @@ rol?: Rol;
 direccion?: Direccion;
 
 
-constructor(){}
 }

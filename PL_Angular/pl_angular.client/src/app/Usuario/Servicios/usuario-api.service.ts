@@ -21,17 +21,25 @@ export class UsuarioAPIService {
 
     const body : Usuario = {
 
-        nombre: "",
-        apellidoPaterno: "",
-        apellidoMaterno: "",
-  rol: {
-    idRol: 0
-    }
+        idUsuario: 0,
+          nombre: "",
+          apellidoPaterno: "",
+          apellidoMaterno: "",
+          rol: {
+            idRol: 0
+          }
 
+    }
+    return this.http.post<Result>(url, body);
+}
+
+  delete(idUsuario : number) : Observable<Result>{
+    const url = 'http://localhost:5173/api/Usuario/Delete/'+idUsuario;
+    return this.http.delete<Result>(url);
   }
 
-    return this.http.post<Result>(url, body);
 
 
+  
 }
-}
+
