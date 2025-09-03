@@ -18,7 +18,6 @@ namespace PL_Angular.Server.Controllers
 
         [HttpPost]
         [Route("Add")]
-        [Authorize]
         public IActionResult Add([FromBody] ML.Usuario usuario)
         {
 
@@ -53,7 +52,6 @@ namespace PL_Angular.Server.Controllers
 
         [HttpPut]
         [Route("Update/{IdUsuario}")]
-        [Authorize]
         public IActionResult Update(int IdUsuario, [FromBody] ML.Usuario usuario)
         {
 
@@ -85,7 +83,6 @@ namespace PL_Angular.Server.Controllers
 
         [HttpDelete]
         [Route("Delete/{IdUsuario}")]
-        [Authorize]
 
         public IActionResult Delete(int IdUsuario)
         {

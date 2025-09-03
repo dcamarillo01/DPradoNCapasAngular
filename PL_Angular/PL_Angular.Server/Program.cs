@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,10 +19,27 @@ builder.Services.AddDbContext<DL.DpradoProgramacionNcapasContext>(options =>
 
 builder.Services.AddScoped<BL.Usuario>();
 
+builder.Services.Configure<ApiBehaviorOptions>(options =>
+{
+    options.SuppressModelStateInvalidFilter = true;
+});
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy
+            .AllowAnyOrigin()   // acepta cualquier origen
+            .AllowAnyHeader()   // acepta cualquier header
+            .AllowAnyMethod();  // acepta GET, POST, PUT, DELETE, etc.
+    });
+});
 
 
 var app = builder.Build();
+
+app.UseHttpsRedirection();
+app.UseCors("AllowAll");
 
 app.UseDefaultFiles();
 app.UseStaticFiles();

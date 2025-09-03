@@ -4,25 +4,25 @@ import {Direccion} from './Direccion';
 
 export class Usuario{
     
-IdUsuario?: number;
-Nombre?: string;
-ApellidoPaterno?: string;
-ApellidoMaterno?: string;
-Email?: string;
-Password?: string;
-UserName?: string;
-FechaNacimiento?: string;
-Sexo?: string;
-Telefono?: string;
-Celular?: string;
-CURP?: string;
-Imagen?: string;
-Status?: boolean;
-Usuarios?: Usuario[];
+idUsuario?: number;
+nombre?: string;
+apellidoPaterno?: string;
+apellidoMaterno?: string;
+email?: string;
+password?: string;
+userName?: string;
+fechaNacimiento?: string;
+sexo?: string;
+telefono?: string;
+celular?: string;
+curp?: string;
+imagen?: string;
+status?: boolean;
+usuarios?: Usuario[];
 
 //Propiedades de Navegacion
-Rol?: Rol;
-Direccion?: Direccion;
+rol?: Rol;
+direccion?: Direccion;
 
 
 constructor(){}

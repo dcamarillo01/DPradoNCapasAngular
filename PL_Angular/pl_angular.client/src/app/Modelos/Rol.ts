@@ -1,5 +1,5 @@
 export class Rol{
 
-    IdRol?: number;
-    Nombre?: string;
+    idRol?: number;
+    nombre?: string;
 }
