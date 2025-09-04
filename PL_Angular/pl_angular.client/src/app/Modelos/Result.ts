@@ -1,8 +1,8 @@
 export class Result{
     
-  Correct?: boolean;
-  ErrorMessage?: string;
-  Object: any;
+  correct?: boolean;
+  errorMessage?: string;
+  object: any;
   objects!: any[];
 
 }

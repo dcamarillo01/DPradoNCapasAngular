@@ -8,6 +8,7 @@ const routes: Routes = [
 
   {path: 'UsuarioGetAll', component: UsuarioGetAllComponent},
   {path: 'UsuarioForm', component: UsuarioFormComponent},
+  {path: 'UsuarioForm/:id', component: UsuarioFormComponent},
   {path: '*', component: AppComponent}
 
 ];

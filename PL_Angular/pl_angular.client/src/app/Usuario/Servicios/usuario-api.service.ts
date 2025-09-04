@@ -34,11 +34,17 @@ export class UsuarioAPIService {
 }
 
   delete(idUsuario : number) : Observable<Result>{
-    const url = 'http://localhost:5173/api/Usuario/Delete/'+idUsuario;
+    const url = `http://localhost:5173/api/Usuario/Delete/${idUsuario}`;
     return this.http.delete<Result>(url);
   }
 
+  getById(idUsuario:number) : Observable<Result>{
 
+    const url = `http://localhost:5173/api/Usuario/GetById/${idUsuario}`;
+    return this.http.get<Result>(url);
+
+  }
+ 
 
   
 }

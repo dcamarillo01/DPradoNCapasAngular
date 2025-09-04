@@ -1,1 +1,45 @@
-<p>usuario-form works!</p>
+
+
+<div class="container shadow-lg rounded-5" style="padding:30px; ">
+    <div class="row">
+        <div class="col">
+
+            <h1>Agregar Usuario</h1>
+
+            <div class="row">
+                <div class="col">
+                    <form>
+                        <div class="row">
+                            <div class="col">
+                                <label>Nombre</label>
+                                <input name="nombre" type="string" [(ngModel)]="usuario.nombre" placeholder="Ingresa nombre" class="form-control"/>
+                            </div>
+                            <div class="col">
+                                <label>ApellidoPaterno</label>
+                                <input  name="apellidoPaterno"type="string" [(ngModel)]="usuario.apellidoPaterno" placeholder="Ingresa apellido" class="form-control"/>
+                            </div>
+                            <div class="col">
+                                <label>ApellidoMaterno</label>
+                                <input name="apellidoMaterno" type="string" [(ngModel)]="usuario.apellidoMaterno" placeholder="Ingresa apellido" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                             <div class="col">
+                                <label>UserName</label>
+                                <input name="nombre" type="string" [(ngModel)]="usuario.userName" placeholder="Ingresa nombre" class="form-control"/>
+                            </div>
+                            <div class="col">
+                                <label>Email</label>
+                                <input  name="apellidoPaterno"type="string" [(ngModel)]="usuario.email" placeholder="Ingresa apellido" class="form-control"/>
+                            </div>
+                            <div class="col">
+                                <label>Password</label>
+                                <input name="apellidoMaterno" type="password" [(ngModel)]="usuario.password" placeholder="Ingresa apellido" class="form-control"/>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
