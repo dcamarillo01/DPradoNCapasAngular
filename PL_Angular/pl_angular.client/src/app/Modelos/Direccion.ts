@@ -1,10 +1,10 @@
+import {Colonia} from './Colonia';
 
 export class Direccion{
-    
-IdDireccion?: number;
-Calle?: string;
-NumeroInterior?: string;
-NumeroExterior?: string;
-Colonia?: string;
+iIdDireccion?: number;
+calle?: string;
+numeroInterior?: string;
+numeroExterior?: string;
+colonia?: Colonia ;
 
 }

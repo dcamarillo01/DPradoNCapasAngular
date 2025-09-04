@@ -1,14 +1,15 @@
 
 
+<h1>Agregar Usuario</h1>
+
+
 <div class="container shadow-lg rounded-5" style="padding:30px; ">
     <div class="row">
         <div class="col">
-
-            <h1>Agregar Usuario</h1>
-
             <div class="row">
                 <div class="col">
                     <form>
+                        <h2>Datos Personales</h2>
                         <div class="row">
                             <div class="col">
                                 <label class="form-label">Nombre</label>
@@ -41,6 +42,20 @@
                              <div class="col">
                                 <label class="form-label">Sexo</label>
                                 <input name="sexo" type="string" [(ngModel)]="usuario.sexo" placeholder="Sex" class="form-control"/>
+                            <div>
+                                <div class="form-check">
+  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+  <label class="form-check-label" for="flexRadioDefault1">
+    H
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" >
+  <label class="form-check-label" for="flexRadioDefault2">
+    M
+  </label>
+</div>
+                            </div>
                             </div>
                             <div class="col">
                                 <label class="form-label">Telefono</label>
@@ -51,6 +66,22 @@
                                 <input name="celular" type="string" [(ngModel)]="usuario.celular" placeholder="5555555555" class="form-control"/>
                             </div>
                         </div>
+                        <div class="row">
+                            <h2>Direccion</h2>
+                            <div class="col">
+                                 <label class="form-label">Calle</label>
+                                <input name="calle" type="string" [(ngModel)]="usuario.direccion!.calle" placeholder="Calle" class="form-control"/>
+                            </div>
+                            <div class="col">
+                                 <label class="form-label">Numero Interior</label>
+                                <input name="numeroInterior" type="string" [(ngModel)]="usuario.direccion!.numeroInterior" placeholder="###" class="form-control"/>
+                            </div>
+                            <div class="col">
+                                 <label class="form-label">Numero Exterior</label>
+                                <input name="numeroExterior" type="string" [(ngModel)]="usuario.direccion!.numeroExterior" placeholder="###" class="form-control"/>
+                            </div>
+                        </div>
+
                         <div class="row">
                             <div class="col">
                             
@@ -67,7 +98,7 @@
                             <div class="col">
                             
                             <label class="form-label">Municipio</label>
-                            <select name="estado" class="form-select" [(ngModel)]="selectedMunicipio" (change)="fillColonias(selectedMunicipio)">
+                            <select name="municipio" class="form-select" [(ngModel)]="selectedMunicipio" (change)="fillColonias(selectedMunicipio)">
                              <option *ngFor="let municipio of municipios" [value]="municipio.idMunicipio">
                             {{ municipio.nombre }}
                             </option>
@@ -79,7 +110,7 @@
                             <div class="col">
                             
                             <label class="form-label">Colonia</label>
-                            <select name="estado" class="form-select" [(ngModel)]="selectedColonia">
+                            <select name="colonia" class="form-select" [(ngModel)]="selectedColonia">
                              <option *ngFor="let colonia of colonias" [value]="colonia.idColonia">
                             {{ colonia.nombre }}
                             </option>
@@ -89,8 +120,6 @@
 
                             </div>
                         </div>
-                        
-                        
                         
                     </form>
                 </div>

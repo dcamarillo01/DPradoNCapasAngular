@@ -25,6 +25,10 @@ export class UsuarioFormComponent implements OnInit {
 
   usuario :Usuario =  new Usuario();
   // usuario: Usuario = {} as Usuario;
+  // direccion : Direccion = new Direccion();
+  // estado: Estado = new Estado();
+  // municipio: Municipio = new Municipio();
+  // colonia: Colonia = new Colonia();
 
   roles: Rol[] = [];
   estados : Estado[] = [];
@@ -42,11 +46,17 @@ ngOnInit(): void {
 
   this.usuario.idUsuario = this.route.snapshot.params["id"];
 
+  this.getEstados();
+
+
   if(this.usuario.idUsuario > 0){
       this.getById();
+  }else{
+
+    this.usuario = new Usuario();
+    this.usuario.direccion = new Direccion();
   }
 
-  this.getEstados();
 
 
 }
@@ -57,7 +67,13 @@ ngOnInit(): void {
 
       this.usuario = data.object;
       console.log(this.usuario)
+      this.selectedEstado = this.usuario.direccion!.colonia!.municipio!.estado!.idEstado!;
+      this.selectedMunicipio = this.usuario.direccion!.colonia!.municipio!.idMunicipio!;
+      this.selectedColonia = this.usuario.direccion!.colonia!.idColonia!;
 
+      this.fillMunicipios(this.selectedEstado);
+      this.fillColonias(this.selectedMunicipio);
+      
 
     })
 
