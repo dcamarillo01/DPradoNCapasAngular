@@ -11,32 +11,87 @@
                     <form>
                         <div class="row">
                             <div class="col">
-                                <label>Nombre</label>
+                                <label class="form-label">Nombre</label>
                                 <input name="nombre" type="string" [(ngModel)]="usuario.nombre" placeholder="Ingresa nombre" class="form-control"/>
                             </div>
                             <div class="col">
-                                <label>ApellidoPaterno</label>
+                                <label class="form-label">ApellidoPaterno</label>
                                 <input  name="apellidoPaterno"type="string" [(ngModel)]="usuario.apellidoPaterno" placeholder="Ingresa apellido" class="form-control"/>
                             </div>
                             <div class="col">
-                                <label>ApellidoMaterno</label>
+                                <label class="form-label">ApellidoMaterno</label>
                                 <input name="apellidoMaterno" type="string" [(ngModel)]="usuario.apellidoMaterno" placeholder="Ingresa apellido" class="form-control"/>
                             </div>
                         </div>
                         <div class="row">
                              <div class="col">
-                                <label>UserName</label>
-                                <input name="nombre" type="string" [(ngModel)]="usuario.userName" placeholder="Ingresa nombre" class="form-control"/>
+                                <label class="form-label">UserName</label>
+                                <input name="userName" type="string" [(ngModel)]="usuario.userName" placeholder="UserName" class="form-control"/>
                             </div>
                             <div class="col">
-                                <label>Email</label>
-                                <input  name="apellidoPaterno"type="string" [(ngModel)]="usuario.email" placeholder="Ingresa apellido" class="form-control"/>
+                                <label class="form-label">Email</label>
+                                <input  name="email"type="string" [(ngModel)]="usuario.email" placeholder="email@gmail.com" class="form-control"/>
                             </div>
                             <div class="col">
-                                <label>Password</label>
-                                <input name="apellidoMaterno" type="password" [(ngModel)]="usuario.password" placeholder="Ingresa apellido" class="form-control"/>
+                                <label class="form-label">Password</label>
+                                <input name="password" type="password" [(ngModel)]="usuario.password" placeholder="Password" class="form-control"/>
                             </div>
                         </div>
+                        <div class="row">
+                             <div class="col">
+                                <label class="form-label">Sexo</label>
+                                <input name="sexo" type="string" [(ngModel)]="usuario.sexo" placeholder="Sex" class="form-control"/>
+                            </div>
+                            <div class="col">
+                                <label class="form-label">Telefono</label>
+                                <input  name="telefono"type="string" [(ngModel)]="usuario.telefono" placeholder="5555555555" class="form-control"/>
+                            </div>
+                            <div class="col">
+                                <label class="form-label">Celular</label>
+                                <input name="celular" type="string" [(ngModel)]="usuario.celular" placeholder="5555555555" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                            
+                            <label class="form-label">Estado</label>
+                            <select name="estado" class="form-select" [(ngModel)]="selectedEstado" (change)="fillMunicipios(selectedEstado)">
+                             <option *ngFor="let estado of estados" [value]="estado.idEstado">
+                            {{ estado.nombre }}
+                            </option>
+                            
+                             </select>
+                            <p>You selected: {{ selectedEstado }}</p>
+
+                            </div>
+                            <div class="col">
+                            
+                            <label class="form-label">Municipio</label>
+                            <select name="estado" class="form-select" [(ngModel)]="selectedMunicipio" (change)="fillColonias(selectedMunicipio)">
+                             <option *ngFor="let municipio of municipios" [value]="municipio.idMunicipio">
+                            {{ municipio.nombre }}
+                            </option>
+                            
+                             </select>
+                            <p>You selected: {{ selectedMunicipio }}</p>
+
+                            </div>
+                            <div class="col">
+                            
+                            <label class="form-label">Colonia</label>
+                            <select name="estado" class="form-select" [(ngModel)]="selectedColonia">
+                             <option *ngFor="let colonia of colonias" [value]="colonia.idColonia">
+                            {{ colonia.nombre }}
+                            </option>
+                            
+                             </select>
+                            <p>You selected: {{ selectedColonia }}</p>
+
+                            </div>
+                        </div>
+                        
+                        
+                        
                     </form>
                 </div>
             </div>

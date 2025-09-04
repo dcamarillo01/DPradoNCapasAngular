@@ -18,6 +18,9 @@ builder.Services.AddDbContext<DL.DpradoProgramacionNcapasContext>(options =>
     options.UseSqlServer(conString));
 
 builder.Services.AddScoped<BL.Usuario>();
+builder.Services.AddScoped<BL.Estado>();
+builder.Services.AddScoped<BL.Municipio>();
+builder.Services.AddScoped<BL.Colonia>();
 
 builder.Services.Configure<ApiBehaviorOptions>(options =>
 {

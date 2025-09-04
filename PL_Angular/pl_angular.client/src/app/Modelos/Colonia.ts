@@ -3,13 +3,13 @@ import { Municipio } from "./Municipio";
 
 export class Colonia{
     
-  IdColonia?: number;
-  Nombre?: string;
-  CodigoPostal?: string;
-  Colonias?: Colonia[];
+  idColonia?: number;
+  nombre?: string;
+  codigoPostal?: string;
+  colonias?: Colonia[];
 
   //Propiedades de Navegacion
-  Municipio?: Municipio;
+  municipio?: Municipio;
 
 
 }

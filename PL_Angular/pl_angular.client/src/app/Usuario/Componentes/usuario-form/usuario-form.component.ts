@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 
 
 import {UsuarioAPIService} from '../../Servicios/usuario-api.service';
+import {DireccionApiService} from '../../../Direccion/Servicios/direccion-api.service';
 import { ActivatedRoute } from '@angular/router';
 
 
@@ -27,16 +28,26 @@ export class UsuarioFormComponent implements OnInit {
 
   roles: Rol[] = [];
   estados : Estado[] = [];
+  selectedEstado!: number;
   municipios : Municipio[] = [];
+  selectedMunicipio!: number;
   colonias : Colonia[] = [];
+  selectedColonia!: number;
 
-  constructor(private apiService: UsuarioAPIService, private route: ActivatedRoute){}
+
+  constructor(private apiService: UsuarioAPIService, private route: ActivatedRoute, private direccionApiService: DireccionApiService){}
 
 
 ngOnInit(): void {
 
   this.usuario.idUsuario = this.route.snapshot.params["id"];
-  this.getById();
+
+  if(this.usuario.idUsuario > 0){
+      this.getById();
+  }
+
+  this.getEstados();
+
 
 }
 
@@ -50,6 +61,43 @@ ngOnInit(): void {
 
     })
 
+  }
+
+  getEstados(){
+
+    this.direccionApiService.getEstados().subscribe((data: Result) => {
+
+      this.estados = data.objects;
+      console.log(this.estados)
+    })
+
+  }
+
+  fillMunicipios(idEestado : number){
+
+    console.log(idEestado);
+
+    this.direccionApiService.getMunicipios(idEestado).subscribe((data: Result) => {
+
+      this.municipios = data.objects;
+      console.log(this.municipios)
+
+
+    })
+
+
+  }
+
+  fillColonias(idMunicipio: number){
+
+    console.log(idMunicipio)
+    this.direccionApiService.getColonias(idMunicipio).subscribe((data: Result) => {
+
+      this.colonias = data.objects;
+      console.log(this.colonias)
+
+
+    })
   }
 
 
