@@ -44,6 +44,14 @@ export class UsuarioAPIService {
     return this.http.get<Result>(url);
 
   }
+
+  setStatus(idUsuario:number, status: boolean) : Observable<Result>{
+
+    const url = `http://localhost:5173/api/Usuario/SetStatus/${idUsuario}/${status}`
+    return this.http.get<Result>(url);
+
+
+  }
  
 
   

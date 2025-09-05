@@ -139,6 +139,21 @@ namespace PL_Angular.Server.Controllers
 
         }
 
+        [HttpGet]
+        [Route("SetStatus/{IdUsuario}/{Status}")]
+        public IActionResult SetStatus(int IdUsuario, bool Status) {
+
+            ML.Result result = _usuario.SetStatus(IdUsuario,Status);
+            if (result.Correct)
+            {
+
+                return Ok(result);
+            }
+            else { 
+                return BadRequest(result);
+            }
+        }
+
 
     }
 }

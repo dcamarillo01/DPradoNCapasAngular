@@ -43,8 +43,17 @@ export class UsuarioGetAllComponent implements OnInit {
 
   }
 
-  botonPrueba(idUsuario: number){
+  delete(idUsuario: number){
     this.usuarioApi.delete(idUsuario).subscribe((data: Result) =>{
+
+      console.log(data);
+
+
+    })
+  }
+
+  setStatus(idUsuario : number, Status:boolean){
+    this.usuarioApi.setStatus(idUsuario, Status).subscribe((data: Result) =>{
 
       console.log(data);
 

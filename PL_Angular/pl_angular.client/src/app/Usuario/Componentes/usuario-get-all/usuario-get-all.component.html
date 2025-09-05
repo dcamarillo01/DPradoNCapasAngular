@@ -38,7 +38,13 @@
                         <tbody *ngFor="let usuario of Usuarios">
                             <tr>
                                 <td>{{usuario.idUsuario}}</td>
-                                <td>{{usuario.status}}</td>
+                                <!-- <td>{{usuario.status}}</td> -->
+                                <td>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" [(ngModel)]="usuario.status" type="checkbox" role="switch" id="flexSwitchCheckDefault"
+                                        (change)="setStatus(usuario.idUsuario,usuario.status!)">
+                                    </div>
+                                </td>
                                 <td><img src="data:image/jpeg;base64,{{usuario.imagen}}" width="50" /></td>
                                 <td>{{usuario.nombre}}</td>
                                 <td>{{usuario.apellidoPaterno}}</td>
@@ -51,7 +57,7 @@
                                     <button class="btn btn-warning" [routerLink]="['/UsuarioForm',usuario.idUsuario]"><i class="bi bi-pencil-square"></i></button>
                                 </td>
                                 <td>
-                                    <button class="btn btn-danger" (click)="botonPrueba(usuario.idUsuario)" ><i class="bi bi-person-dash"></i></button>
+                                    <button class="btn btn-danger" (click)="delete(usuario.idUsuario)" ><i class="bi bi-person-dash"></i></button>
                                 </td>
                             </tr>
                         </tbody>
