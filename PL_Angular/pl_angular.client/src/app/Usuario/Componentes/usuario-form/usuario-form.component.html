@@ -1,7 +1,16 @@
 
 
-<h1>Agregar Usuario</h1>
 
+<div class="row">
+    <div class="col-6 ">
+        <h1>Agregar Usuario</h1>
+    </div>
+</div>
+<div class="row justify-content-end" style="padding-bottom: 20px;">
+    <div class="col-1">
+        <button class="btn btn-danger" style="width: 100px;" routerLink="/UsuarioGetAll"><i class="bi bi-arrow-bar-right"></i></button>
+    </div>
+</div>
 
 <div class="container shadow-lg rounded-5" style="padding:30px; ">
     <div class="row">
@@ -9,8 +18,26 @@
             <div class="row">
                 <div class="col">
                     <form>
-                        <h2>Datos Personales</h2>
                         <div class="row">
+                            <div class="col-3">
+                                <h4>Foto</h4>
+                                <div class="row mb-5">
+                                    @if (imgPreview!=null) {
+                                <img src="{{imgPreview}}" width="60"  />
+                            }   
+                            @else{
+                                <img src="Imagenes/DefaultUser.png" width="60"  />
+                            }
+                                </div>
+                                <div class="row">
+                                    <input class="form-control" type="file" name="imagen" (change)="inputIMG($event)" />
+
+                                </div>
+
+                            </div>
+                            <div class="col-9">
+                                <h4>Datos Personales</h4>
+                        <div class="row mb-3">
                             <div class="col">
                                 <label class="form-label">Nombre</label>
                                 <input name="nombre" type="string" [(ngModel)]="usuario.nombre" placeholder="Ingresa nombre" class="form-control"/>
@@ -23,23 +50,20 @@
                                 <label class="form-label">ApellidoMaterno</label>
                                 <input name="apellidoMaterno" type="string" [(ngModel)]="usuario.apellidoMaterno" placeholder="Ingresa apellido" class="form-control"/>
                             </div>
+                            
                         </div>
-                        <div class="row">
-                             <div class="col">
-                                <label class="form-label">UserName</label>
-                                <input name="userName" type="string" [(ngModel)]="usuario.userName" placeholder="UserName" class="form-control"/>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label class="form-label">Rol</label>
+                            <select name="rol" class="form-select" [(ngModel)]="selectedRol">
+                             <option  [value]="0"><-Selecciona un Rol-></option>
+                             <option  [value]="1">Administrador</option>
+                             <option  [value]="2">JefeDirecto</option>
+                             <option  [value]="3">Empleado</option>
+                            
+                             </select>
                             </div>
                             <div class="col">
-                                <label class="form-label">Email</label>
-                                <input  name="email"type="string" [(ngModel)]="usuario.email" placeholder="email@gmail.com" class="form-control"/>
-                            </div>
-                            <div class="col">
-                                <label class="form-label">Password</label>
-                                <input name="password" type="password" [(ngModel)]="usuario.password" placeholder="Password" class="form-control"/>
-                            </div>
-                        </div>
-                        <div class="row">
-                             <div class="col">
                                 <div class="row">
                                     <label class="form-label">Sexo</label>
                                     <div class="form-check col">
@@ -52,17 +76,45 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="row mb-3">
+                             <div class="col">
+                                <label class="form-label">UserName</label>
+                                <input name="userName" type="string" [(ngModel)]="usuario.userName" placeholder="UserName" class="form-control"/>
+                            </div>
+                            <div class="col">
+                                <label class="form-label">Email</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-at"></i></span>
+                                <input  name="email"type="string" [(ngModel)]="usuario.email" placeholder="email@gmail.com" class="form-control"/>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <label class="form-label">Password</label>
+                                <input name="password" type="password" [(ngModel)]="usuario.password" placeholder="Password" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                             
                             <div class="col">
                                 <label class="form-label">Telefono</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-telephone"></i></span>
                                 <input  name="telefono"type="string" [(ngModel)]="usuario.telefono" placeholder="5555555555" class="form-control"/>
+                                </div>
                             </div>
                             <div class="col">
                                 <label class="form-label">Celular</label>
-                                <input name="celular" type="string" [(ngModel)]="usuario.celular" placeholder="5555555555" class="form-control"/>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-phone"></i></span>
+                                    <input name="celular" type="string" [(ngModel)]="usuario.celular" placeholder="5555555555" class="form-control"/>
+                                    
+                                </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <h2>Direccion</h2>
+                        <hr>
+                        <div class="row mb-3">
+                            <h4>Direccion</h4>
                             <div class="col">
                                  <label class="form-label">Calle</label>
                                 <input name="calle" type="string" [(ngModel)]="usuario.direccion!.calle" placeholder="Calle" class="form-control"/>
@@ -77,7 +129,7 @@
                             </div>
                         </div>
 
-                        <div class="row">
+                        <div class="row mb-3" >
                             <div class="col">
                             
                             <label class="form-label">Estado</label>
@@ -85,9 +137,8 @@
                              <option *ngFor="let estado of estados" [value]="estado.idEstado">
                             {{ estado.nombre }}
                             </option>
-                            
                              </select>
-                            <p>You selected: {{ selectedEstado }}</p>
+                            <p>{{selectedEstado}}</p>
 
                             </div>
                             <div class="col">
@@ -97,10 +148,7 @@
                              <option *ngFor="let municipio of municipios" [value]="municipio.idMunicipio">
                             {{ municipio.nombre }}
                             </option>
-                            
                              </select>
-                            <p>You selected: {{ selectedMunicipio }}</p>
-
                             </div>
                             <div class="col">
                             
@@ -111,14 +159,25 @@
                             </option>
                             
                              </select>
-                            <p>You selected: {{ selectedColonia }}</p>
-
+                            </div>
+                        </div>
                             </div>
                         </div>
                         
+                        <!-- @if(usuario.imagen!=null){
+                                <img src="data:image/jpeg;base64,{{usuario.imagen}}" width="60"  />
+                            }@else  -->
+                        <!-- Imagen  -->
+                         <div class="d-flex justify-content-end gap-2 mt-4">
+                        <a class="btn btn-outline-secondary" routerLink="/UsuarioGetAll">Cancelar</a>
+                        <button type="submit" class="btn btn-primary" (click)="registrarUsuario(usuario)">Guardar</button>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
+

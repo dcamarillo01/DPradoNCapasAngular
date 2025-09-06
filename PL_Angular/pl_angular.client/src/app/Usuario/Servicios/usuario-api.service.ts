@@ -52,6 +52,14 @@ export class UsuarioAPIService {
 
 
   }
+
+  registrarUsuario(Usuario: Usuario) : Observable<Result>{
+
+    const url = "http://localhost:5173/api/Usuario/Add";
+    const body = Usuario;
+    return this.http.post<Result>(url, body);
+
+  }
  
 
   

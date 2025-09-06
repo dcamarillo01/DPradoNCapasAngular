@@ -45,7 +45,13 @@
                                         (change)="setStatus(usuario.idUsuario,usuario.status!)">
                                     </div>
                                 </td>
+                                @if(usuario.imagen!= null){
                                 <td><img src="data:image/jpeg;base64,{{usuario.imagen}}" width="50" /></td>
+
+                                }@else{
+                                    <td><img src="Imagenes/DefaultUser.png" width="50" /></td>
+
+                                }
                                 <td>{{usuario.nombre}}</td>
                                 <td>{{usuario.apellidoPaterno}}</td>
                                 <td>{{usuario.userName}}</td>

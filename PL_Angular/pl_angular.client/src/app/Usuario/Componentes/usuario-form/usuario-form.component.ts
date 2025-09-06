@@ -26,9 +26,12 @@ export class UsuarioFormComponent implements OnInit {
   usuario :Usuario =  new Usuario();
   // usuario: Usuario = {} as Usuario;
   // direccion : Direccion = new Direccion();
+  // rol: Rol = new Rol();
   // estado: Estado = new Estado();
   // municipio: Municipio = new Municipio();
   // colonia: Colonia = new Colonia();
+
+  selectedRol!: number;
 
   roles: Rol[] = [];
   estados : Estado[] = [];
@@ -37,6 +40,8 @@ export class UsuarioFormComponent implements OnInit {
   selectedMunicipio!: number;
   colonias : Colonia[] = [];
   selectedColonia!: number;
+
+  imgPreview !: string;
 
 
   constructor(private apiService: UsuarioAPIService, private route: ActivatedRoute, private direccionApiService: DireccionApiService){}
@@ -66,6 +71,7 @@ ngOnInit(): void {
     this.apiService.getById(this.usuario.idUsuario).subscribe((data: Result) => {
 
       this.usuario = data.object;
+      this.imgPreview = "data:image/jpeg;base64," + this.usuario.imagen;
       console.log(this.usuario)
       this.selectedEstado = this.usuario.direccion!.colonia!.municipio!.estado!.idEstado!;
       this.selectedMunicipio = this.usuario.direccion!.colonia!.municipio!.idMunicipio!;
@@ -73,6 +79,8 @@ ngOnInit(): void {
 
       this.fillMunicipios(this.selectedEstado);
       this.fillColonias(this.selectedMunicipio);
+
+      this.selectedRol = this.usuario.rol!.idRol!;
       
 
     })
@@ -85,6 +93,7 @@ ngOnInit(): void {
 
       this.estados = data.objects;
       console.log(this.estados)
+      console.log("si funciona peticion")
     })
 
   }
@@ -116,8 +125,22 @@ ngOnInit(): void {
     })
   }
 
+  
+inputIMG(event: any) {
+  if (event.target.files && event.target.files[0]) {
+    this.imgPreview = URL.createObjectURL(event.target.files[0]);
+  }
+}
 
 
+  registrarUsuario(usuario: Usuario){
+
+    this.apiService.registrarUsuario(usuario).subscribe((data: Result) => {
+
+      console.log(data);
+
+    })
+  }
 
   
 
