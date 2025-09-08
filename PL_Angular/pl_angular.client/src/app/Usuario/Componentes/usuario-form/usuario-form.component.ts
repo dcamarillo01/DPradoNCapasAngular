@@ -127,9 +127,20 @@ ngOnInit(): void {
 
   
 inputIMG(event: any) {
-  if (event.target.files && event.target.files[0]) {
+
+  let extensions = ["png", "jpg", "jpeg"];
+  let imgExtension = event.target.files[0].name.split('.')[1]
+  if (!extensions.includes(imgExtension)) {
+    alert("Solo se permiten imagenes")
+    event.target.value = null;
+    this.imgPreview = "Imagenes/DefaultUser.png";
+  }else{
+     if (event.target.files && event.target.files[0]) {
     this.imgPreview = URL.createObjectURL(event.target.files[0]);
   }
+  }
+
+ 
 }
 
 
