@@ -2,7 +2,7 @@
 
 
 <div class="row">
-    <div class="col-6 ">
+    <div class="col-6 justify-content-end">
         <h1>Agregar Usuario</h1>
     </div>
 </div>
@@ -11,6 +11,7 @@
         <button class="btn btn-danger" style="width: 100px;" routerLink="/UsuarioGetAll"><i class="bi bi-arrow-bar-right"></i></button>
     </div>
 </div>
+
 
 <div class="container shadow-lg rounded-5" style="padding:30px; ">
     <div class="row">
@@ -23,7 +24,7 @@
                                 <h4>Foto</h4>
                                 <div class="row mb-5">
                                     @if (imgPreview!=null) {
-                                <img src="{{imgPreview}}" width="60"  />
+                                <img src="data:image/jpeg;base64,{{imgPreview}}" width="60"  />
                             }   
                             @else{
                                 <img src="Imagenes/DefaultUser.png" width="60"  />
@@ -63,6 +64,20 @@
                             
                              </select>
                             </div>
+                            <div class="col">
+                                <label class="form-label">Fecha de Nacimiento</label>
+                                <!-- <input name="fechaNacimiento" type="date" [(ngModel)]="usuario.fechaNacimiento" class="form-control"/> -->
+                                  <input class="form-control" name="fechaNacimiento"
+                                  [(ngModel)]="usuario.fechaNacimiento"
+                                type="text"
+                                mwlFlatpickr
+                                [altInput]="true"
+                                [altFormat]="'d-m-Y'"
+                                [dateFormat]="'d-m-Y'"
+                                placeholder="Selecciona una fecha"
+                                />
+                            </div>
+                           
                             <div class="col">
                                 <div class="row">
                                     <label class="form-label">Sexo</label>
@@ -110,6 +125,10 @@
                                     <input name="celular" type="string" [(ngModel)]="usuario.celular" placeholder="5555555555" class="form-control"/>
                                     
                                 </div>
+                            </div>
+                            <div class="col">
+                                <label class="form-label">CURP</label>
+                                <input name="CURP" type="string" [(ngModel)]="usuario.curp" placeholder="CURP" class="form-control"/>
                             </div>
                         </div>
                         <hr>

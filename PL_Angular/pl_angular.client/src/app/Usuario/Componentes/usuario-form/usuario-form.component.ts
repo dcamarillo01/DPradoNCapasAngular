@@ -24,6 +24,7 @@ export class UsuarioFormComponent implements OnInit {
 
 
   usuario :Usuario =  new Usuario();
+
   // usuario: Usuario = {} as Usuario;
   // direccion : Direccion = new Direccion();
   // rol: Rol = new Rol();
@@ -42,6 +43,7 @@ export class UsuarioFormComponent implements OnInit {
   selectedColonia!: number;
 
   imgPreview !: string;
+base64textString!: string;
 
 
   constructor(private apiService: UsuarioAPIService, private route: ActivatedRoute, private direccionApiService: DireccionApiService){}
@@ -136,7 +138,13 @@ inputIMG(event: any) {
     this.imgPreview = "Imagenes/DefaultUser.png";
   }else{
      if (event.target.files && event.target.files[0]) {
-    this.imgPreview = URL.createObjectURL(event.target.files[0]);
+    // this.imgPreview = URL.createObjectURL(event.target.files[0]);
+    const reader = new FileReader();
+    const img64 = reader.readAsDataURL(event.target.files[0]);
+    reader.onload = () => {
+        this.imgPreview = (reader.result as string).split(',')[1];
+      };
+
   }
   }
 
@@ -146,11 +154,47 @@ inputIMG(event: any) {
 
   registrarUsuario(usuario: Usuario){
 
-    this.apiService.registrarUsuario(usuario).subscribe((data: Result) => {
+    
+    usuario.direccion!.colonia = new Colonia();
+    usuario.rol = new Rol();
+
+    usuario.rol!.idRol! = this.selectedRol;
+    
+    usuario.imagenBase64 = this.imgPreview;
+
+
+    
+    console.log(usuario);
+    console.log(this.selectedColonia);
+    usuario.direccion!.colonia!.idColonia! = this.selectedColonia;
+    console.log(usuario.direccion?.colonia?.idColonia)
+
+    if(usuario.idUsuario > 0){
+
+      this.apiService.actualizarUsuario(usuario,usuario.idUsuario).subscribe((data: Result) =>{
+
+        console.log(data)
+        if(data.correct){
+          console.log("correcto")
+          alert("Se actualizo Usuario")
+        }
+
+
+      })
+
+    }else{
+
+      this.apiService.registrarUsuario(usuario).subscribe((data: Result) => {
 
       console.log(data);
+      if(data.correct){
+        console.log("correcto")
+      }
 
     })
+    }
+
+    
   }
 
   

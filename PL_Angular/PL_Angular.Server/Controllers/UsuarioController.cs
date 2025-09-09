@@ -32,10 +32,10 @@ namespace PL_Angular.Server.Controllers
             }
             usuario.ImagenBase64 = null;
 
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 ML.Result result = _usuario.Add(usuario);
-                if (result.Correct)
+            if (result.Correct)
                 {
                     return Ok(result);
                 }
@@ -43,11 +43,11 @@ namespace PL_Angular.Server.Controllers
                 {
                     return BadRequest(result);
                 }
-            }
-            else
-            {
-                return BadRequest();
-            }
+            //}
+            //else
+            //{
+            //    return BadRequest();
+            //}
         }
 
         [HttpPut]

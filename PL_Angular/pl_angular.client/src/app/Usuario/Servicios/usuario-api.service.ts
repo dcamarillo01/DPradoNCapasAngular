@@ -12,25 +12,38 @@ export class UsuarioAPIService {
 
   constructor(private http: HttpClient) { }
 
+  body! : Usuario;
 
-
-
-  getAll() : Observable<Result>{
+  getAll(nombre:string , apellidoPaterno:string, apellidoMaterno:string, idRol:number ) : Observable<Result>{
 
     const url = 'http://localhost:5173/api/Usuario/GetAll';
 
-    const body : Usuario = {
+    if(nombre != null || apellidoPaterno != null ||apellidoMaterno != null ){
+      this.body  = {
+
+          idUsuario: 0,
+          nombre: nombre,
+          apellidoPaterno: apellidoPaterno, 
+          apellidoMaterno: apellidoMaterno,
+          rol: {
+            idRol: idRol
+          }
+      }
+    }else{
+      this.body = {
 
         idUsuario: 0,
           nombre: "",
-          apellidoPaterno: "",
+          apellidoPaterno: "", 
           apellidoMaterno: "",
           rol: {
             idRol: 0
           }
 
-    }
-    return this.http.post<Result>(url, body);
+    }}
+
+    
+    return this.http.post<Result>(url, this.body);
 }
 
   delete(idUsuario : number) : Observable<Result>{
@@ -59,6 +72,14 @@ export class UsuarioAPIService {
     const body = Usuario;
     return this.http.post<Result>(url, body);
 
+  }
+
+  actualizarUsuario(Usuario: Usuario, idUsuario: number) : Observable<Result>{
+
+    const url = `http://localhost:5173/api/Usuario/Update/${idUsuario}`;
+    const body = Usuario;
+    return this.http.put<Result>(url, body);
+  
   }
  
 

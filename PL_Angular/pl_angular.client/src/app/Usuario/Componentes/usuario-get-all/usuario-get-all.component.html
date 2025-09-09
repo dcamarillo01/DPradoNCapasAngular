@@ -9,11 +9,46 @@
 
             <h1>Usuarios</h1>
 
-            <div class="row">
-                <div class="col">
+            <div class="row justify-content-end">
+                <div class="col-1">
                     <button class="btn btn-primary" type="button" [routerLink]="['/UsuarioForm']"><i class="bi bi-person-plus"></i></button>
                 </div>
             </div>
+
+            <!-- Busqueda Abierta  -->
+<div class="row">
+    <div class="col">
+        <form>
+            <div class="row">
+                 <div class="col">
+                                <label class="form-label">Nombre</label>
+                                <input name="nombre" type="string" (input)="getNombre($event)" (input)="getAllUsuarios()" placeholder="Ingresa nombre" class="form-control"/>
+                            </div>
+                            <div class="col">
+                                <label class="form-label">ApellidoPaterno</label>
+                                <input  name="apellidoPaterno"type="string" (input)="getApellidoPaterno($event)" (input)="getAllUsuarios()" placeholder="Ingresa apellido" class="form-control"/>
+
+                            </div>
+                            <div class="col">
+                                <label class="form-label">ApellidoMaterno</label>
+                                <input name="apellidoMaterno" type="string" (input)="getApellidoMaterno($event)" (input)="getAllUsuarios()" placeholder="Ingresa apellido" class="form-control"/>
+
+                            </div>
+                             <div class="col">
+                                <label class="form-label">Rol</label>
+                            <select name="rol" class="form-select" [(ngModel)]="selectedRol" (change)="getAllUsuarios()" >
+                             <option  [value]="0"><-Selecciona un Rol-></option>
+                             <option  [value]="1">Administrador</option>
+                             <option  [value]="2">JefeDirecto</option>
+                             <option  [value]="3">Empleado</option>
+                            
+                             </select>
+                            </div>
+            </div>
+   
+        </form>
+    </div>
+</div>
 
             <!-------------------------------------- Tabla Usuarios  ------------------------------------------->
             <div class="row">

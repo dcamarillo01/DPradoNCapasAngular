@@ -17,6 +17,7 @@ telefono?: string;
 celular?: string;
 curp?: string;
 imagen?: string;
+imagenBase64?: string;
 status?: boolean;
 usuarios?: Usuario[];
 

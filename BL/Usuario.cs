@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,6 +37,34 @@ namespace BL
 
 
                 int filasAfectadas = _context.Database.ExecuteSqlRaw($"UsuarioAdd '{Usuario.Nombre}', '{Usuario.ApellidoPaterno}', '{Usuario.ApellidoMaterno}', '{Usuario.Email}', '{Usuario.UserName}', '{Usuario.Password}', '{Usuario.Sexo}', '{Usuario.Telefono}', '{Usuario.Celular}', '{Usuario.FechaNacimiento}', '{Usuario.Curp}', '{Usuario.Rol.IdRol}','{Usuario.Direccion.Calle}', '{Usuario.Direccion.NumeroInterior}', '{Usuario.Direccion.NumeroExterior}', '{Usuario.Direccion.Colonia.IdColonia}',@Imagen", img);
+
+                //                var parametros = new[]
+                //{
+                //                    new SqlParameter("@Nombre", SqlDbType.VarChar, 30){ Value = (object)Usuario.Nombre ?? DBNull.Value },
+                //                    new SqlParameter("@ApellidoPaterno", SqlDbType.VarChar, 30){ Value = (object)Usuario.ApellidoPaterno ?? DBNull.Value },
+                //                    new SqlParameter("@ApellidoMaterno", SqlDbType.VarChar, 30){ Value = (object)Usuario.ApellidoMaterno ?? DBNull.Value },
+                //                    new SqlParameter("@Email", SqlDbType.VarChar, 50){ Value = (object)Usuario.Email ?? DBNull.Value },
+                //                    new SqlParameter("@UserName", SqlDbType.VarChar, 50){ Value = (object)Usuario.UserName ?? DBNull.Value },
+                //                    new SqlParameter("@Password", SqlDbType.VarChar, 50){ Value = (object)Usuario.Password ?? DBNull.Value },
+                //                    new SqlParameter("@Sexo", SqlDbType.VarChar, 2){ Value = (object)Usuario.Sexo ?? DBNull.Value },
+                //                    new SqlParameter("@Telefono", SqlDbType.VarChar, 20){ Value = (object)Usuario.Telefono ?? DBNull.Value },
+                //                    new SqlParameter("@Celular", SqlDbType.VarChar, 20){ Value = (object)Usuario.Celular ?? DBNull.Value },
+                //                    new SqlParameter("@FechaNacimiento", SqlDbType.VarChar, 50){ Value = (object)Usuario.FechaNacimiento ?? DBNull.Value }, // si tu SP recibe varchar(50)
+                //                    new SqlParameter("@CURP", SqlDbType.VarChar, 50){ Value = (object)Usuario.Curp ?? DBNull.Value },
+                //                    new SqlParameter("@IdRol", SqlDbType.Int){ Value = Usuario.Rol.IdRol },
+                //                    new SqlParameter("@Calle", SqlDbType.VarChar, 50){ Value = (object)Usuario.Direccion.Calle ?? DBNull.Value },
+                //                    new SqlParameter("@NumeroInterior", SqlDbType.VarChar, 20){ Value = (object)Usuario.Direccion.NumeroInterior ?? DBNull.Value },
+                //                    new SqlParameter("@NumeroExterior", SqlDbType.VarChar, 20){ Value = (object)Usuario.Direccion.NumeroExterior ?? DBNull.Value },
+                //                    new SqlParameter("@IdColonia", SqlDbType.Int){ Value = Usuario.Direccion.Colonia.IdColonia },
+                //                    new SqlParameter("@Imagen", SqlDbType.VarBinary){ Value = (object)Usuario.Imagen ?? DBNull.Value } // << clave
+                //                };
+
+                //                int filasAfectadas = _context.Database.ExecuteSqlRaw(
+                //                    "EXEC dbo.UsuarioAdd @Nombre, @ApellidoPaterno, @ApellidoMaterno, @Email, @UserName, @Password, @Sexo, @Telefono, @Celular, @FechaNacimiento, @CURP, @IdRol, @Calle, @NumeroInterior, @NumeroExterior, @IdColonia, @Imagen",
+                //                    parametros
+                //                );
+
+
 
                 if (filasAfectadas > 0)
                 {

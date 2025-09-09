@@ -9,6 +9,7 @@ import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { UsuarioGetAllComponent } from './Usuario/Componentes/usuario-get-all/usuario-get-all.component';
 import { UsuarioFormComponent } from './Usuario/Componentes/usuario-form/usuario-form.component';
+import { FlatpickrModule } from 'angularx-flatpickr'
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { UsuarioFormComponent } from './Usuario/Componentes/usuario-form/usuario
   ],
   imports: [
     BrowserModule, HttpClientModule,
-    AppRoutingModule, FormsModule, ReactiveFormsModule
+    AppRoutingModule, FormsModule, ReactiveFormsModule, FlatpickrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
