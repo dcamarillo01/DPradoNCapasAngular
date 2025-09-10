@@ -73,7 +73,7 @@ ngOnInit(): void {
     this.apiService.getById(this.usuario.idUsuario).subscribe((data: Result) => {
 
       this.usuario = data.object;
-      this.imgPreview = "data:image/jpeg;base64," + this.usuario.imagen;
+      this.imgPreview = this.usuario.imagen!;
       console.log(this.usuario)
       this.selectedEstado = this.usuario.direccion!.colonia!.municipio!.estado!.idEstado!;
       this.selectedMunicipio = this.usuario.direccion!.colonia!.municipio!.idMunicipio!;
