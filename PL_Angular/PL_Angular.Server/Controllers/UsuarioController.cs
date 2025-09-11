@@ -63,8 +63,8 @@ namespace PL_Angular.Server.Controllers
             usuario.Imagen = Convert.FromBase64String(usuario.ImagenBase64);
             usuario.ImagenBase64 = null;
 
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 ML.Result result = _usuario.Update(usuario.IdUsuario, usuario);
 
                 if (result.Correct)
@@ -75,7 +75,7 @@ namespace PL_Angular.Server.Controllers
                 {
                     return BadRequest(result);
                 }
-            }
+            //}
 
             return BadRequest();
 

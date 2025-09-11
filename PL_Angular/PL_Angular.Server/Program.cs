@@ -17,10 +17,16 @@ var conString = builder.Configuration.GetConnectionString("DPradoProgramacionNCa
 builder.Services.AddDbContext<DL.DpradoProgramacionNcapasContext>(options =>
     options.UseSqlServer(conString));
 
+//Usuario
 builder.Services.AddScoped<BL.Usuario>();
+
+//Direccion
 builder.Services.AddScoped<BL.Estado>();
 builder.Services.AddScoped<BL.Municipio>();
 builder.Services.AddScoped<BL.Colonia>();
+
+//Empleado
+builder.Services.AddScoped<BL.Empleado>();
 
 builder.Services.Configure<ApiBehaviorOptions>(options =>
 {
