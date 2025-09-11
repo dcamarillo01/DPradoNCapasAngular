@@ -4,7 +4,7 @@ import {Direccion} from './Direccion';
 
 export class Usuario{
     
-idUsuario?: number;
+idUsuario!: number;
 nombre?: string;
 apellidoPaterno?: string;
 apellidoMaterno?: string;
@@ -17,6 +17,7 @@ telefono?: string;
 celular?: string;
 curp?: string;
 imagen?: string;
+imagenBase64?: string;
 status?: boolean;
 usuarios?: Usuario[];
 
@@ -25,5 +26,5 @@ rol?: Rol;
 direccion?: Direccion;
 
 
-constructor(){}
+
 }

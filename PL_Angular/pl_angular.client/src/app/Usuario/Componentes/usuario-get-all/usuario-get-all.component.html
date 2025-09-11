@@ -9,6 +9,48 @@
 
             <h1>Usuarios</h1>
 
+            <div class="row justify-content-end">
+                <div class="col-1">
+                    <button class="btn btn-primary" type="button" [routerLink]="['/UsuarioForm']"><i class="bi bi-person-plus"></i></button>
+                </div>
+            </div>
+
+            <!-- Busqueda Abierta  -->
+<div class="row">
+    <div class="col">
+        <form>
+            <div class="row">
+                 <div class="col">
+                                <label class="form-label">Nombre</label>
+                                <input name="nombre" type="string" (input)="getNombre($event)" (input)="getAllUsuarios()" placeholder="Ingresa nombre" class="form-control"/>
+                            </div>
+                            <div class="col">
+                                <label class="form-label">ApellidoPaterno</label>
+                                <input  name="apellidoPaterno"type="string" (input)="getApellidoPaterno($event)" (input)="getAllUsuarios()" placeholder="Ingresa apellido" class="form-control"/>
+
+                            </div>
+                            <div class="col">
+                                <label class="form-label">ApellidoMaterno</label>
+                                <input name="apellidoMaterno" type="string" (input)="getApellidoMaterno($event)" (input)="getAllUsuarios()" placeholder="Ingresa apellido" class="form-control"/>
+
+                            </div>
+                             <div class="col">
+                                <label class="form-label">Rol</label>
+                            <select name="rol" class="form-select" [(ngModel)]="selectedRol" (change)="getAllUsuarios()" >
+                             <option  [value]="0"><-Selecciona un Rol-></option>
+                             <option  [value]="1">Administrador</option>
+                             <option  [value]="2">JefeDirecto</option>
+                             <option  [value]="3">Empleado</option>
+                            
+                             </select>
+                            </div>
+            </div>
+   
+        </form>
+    </div>
+</div>
+
+            <!-------------------------------------- Tabla Usuarios  ------------------------------------------->
             <div class="row">
                 <div class="col">
                     <table class="table table-striped table-responsive-sm">
@@ -31,8 +73,20 @@
                         <tbody *ngFor="let usuario of Usuarios">
                             <tr>
                                 <td>{{usuario.idUsuario}}</td>
-                                <td>{{usuario.status}}</td>
+                                <!-- <td>{{usuario.status}}</td> -->
+                                <td>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" [(ngModel)]="usuario.status" type="checkbox" role="switch" id="flexSwitchCheckDefault"
+                                        (change)="setStatus(usuario.idUsuario,usuario.status!)">
+                                    </div>
+                                </td>
+                                @if(usuario.imagen!= null){
                                 <td><img src="data:image/jpeg;base64,{{usuario.imagen}}" width="50" /></td>
+
+                                }@else{
+                                    <td><img src="Imagenes/DefaultUser.png" width="50" /></td>
+
+                                }
                                 <td>{{usuario.nombre}}</td>
                                 <td>{{usuario.apellidoPaterno}}</td>
                                 <td>{{usuario.userName}}</td>
@@ -41,10 +95,10 @@
                                 <td>{{usuario.telefono}}</td>
                                 <td>{{usuario.rol?.nombre}}</td>
                                 <td>
-                                    <button class="btn btn-warning"><i class="bi bi-pencil-square"></i></button>
+                                    <button class="btn btn-warning" [routerLink]="['/UsuarioForm',usuario.idUsuario]"><i class="bi bi-pencil-square"></i></button>
                                 </td>
                                 <td>
-                                    <button class="btn btn-danger" ><i class="bi bi-person-dash"></i></button>
+                                    <button class="btn btn-danger" (click)="delete(usuario.idUsuario)" ><i class="bi bi-person-dash"></i></button>
                                 </td>
                             </tr>
                         </tbody>

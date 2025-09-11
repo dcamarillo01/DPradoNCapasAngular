@@ -1,7 +1,7 @@
 export class Estado{
     
-IdEstado?: number;
-Nombre?: string;
-Estados?:Estado[]
+idEstado?: number;
+nombre?: string;
+estados?:Estado[]
 
 }

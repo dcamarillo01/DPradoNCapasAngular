@@ -18,6 +18,13 @@ export class UsuarioGetAllComponent implements OnInit {
   result! : Result;
   Usuarios : Usuario[] = [];
 
+  usuario : Usuario = new Usuario();
+  selectedRol!: number;
+
+  nombre!: string;
+  apellidoPaterno!: string;
+  apellidoMaterno!: string;
+
 
 
 
@@ -28,10 +35,30 @@ export class UsuarioGetAllComponent implements OnInit {
     this.getAllUsuarios();
   }
 
+  // if(usuario.nombre != null || usuario.apellidoPaterno != null || usuario.apellidoMaterno != null || usuario.rol?.idRol){
+  //   this.getAllUsuarios();
+  // }
+
+  getNombre(event: Event){
+    this.nombre = (event.target as HTMLInputElement).value;
+    // this.usuario.nombre = this.nombre;
+
+  }
+
+  getApellidoPaterno(event: Event){
+    this.apellidoPaterno = (event.target as HTMLInputElement).value;
+    // this.usuario.nombre = this.nombre;
+
+  }
+  getApellidoMaterno(event: Event){
+    this.apellidoMaterno = (event.target as HTMLInputElement).value;
+    // this.usuario.nombre = this.nombre;
+
+  }
 
   getAllUsuarios(){
 
-    this.usuarioApi.getAll().subscribe((data: Result) => {
+    this.usuarioApi.getAll(this.nombre,this.apellidoPaterno,this.apellidoMaterno,this.selectedRol).subscribe((data: Result) => {
 
       console.log(data);
       this.result = data;
@@ -41,6 +68,24 @@ export class UsuarioGetAllComponent implements OnInit {
 
     })
 
+  }
+
+  delete(idUsuario: number){
+    this.usuarioApi.delete(idUsuario).subscribe((data: Result) =>{
+
+      console.log(data);
+
+
+    })
+  }
+
+  setStatus(idUsuario : number, Status:boolean){
+    this.usuarioApi.setStatus(idUsuario, Status).subscribe((data: Result) =>{
+
+      console.log(data);
+
+
+    })
   }
 
 }

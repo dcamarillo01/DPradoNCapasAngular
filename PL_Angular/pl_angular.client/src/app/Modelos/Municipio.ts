@@ -3,11 +3,11 @@ import { Estado } from './Estado';
 
 export class Municipio{
     
-  IdMunicipio?: number;
-  Nombre?: string;
-  Municpios?: Municipio[];
+  idMunicipio?: number;
+  nombre?: string;
+  municpios?: Municipio[];
 
   //Propiedades de Navegacion
-  Estado?: Estado;
+  estado?: Estado;
 
 }
