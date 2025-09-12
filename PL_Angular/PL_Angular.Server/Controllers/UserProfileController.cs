@@ -5,52 +5,48 @@ namespace PL_Angular.Server.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class EmpleadoController : ControllerBase
+    public class UserProfileController : ControllerBase
     {
 
-        private readonly BL.Empleado _empleado;
-        public EmpleadoController(BL.Empleado empleado) => _empleado = empleado;
+        private readonly BL.UserProfile _userProfile;
+
+        public UserProfileController(BL.UserProfile userProfile) => _userProfile = userProfile;
 
 
-
-        [HttpPost]
+        [HttpGet]
         [Route("GetAll")]
-        public IActionResult GetAll([FromBody] ML.Empleado empleado) {
+        public IActionResult GetAll() {
 
-            var result = _empleado.GetAll(empleado);
+            var result = _userProfile.GetAll();
             if (result.Correct)
             {
                 return Ok(result);
             }
             else { 
+                return BadRequest(result);
+            }
+
+        }
+
+        [HttpGet]
+        [Route("GetById/{IdEmpleado}")]
+        public IActionResult GetById(int IdEmpleado) {
+
+            var result = _userProfile.GetById(IdEmpleado);
+            if (result.Correct)
+            {
+                return Ok(result);
+            }
+            else {
                 return BadRequest(result);
             }
         }
 
         [HttpGet]
-        [Route("GetById/{IdEmpelado}")]
-        public IActionResult GetById(int IdEmpelado) 
-        {
-            
-            var result = _empleado.GetById(IdEmpelado);
-            if (result.Correct)
-            {
+        [Route("Deactivate/{IdUserProfile}/{Status}")]
+        public IActionResult Deactivate(int IdUserProfile, bool Status) {
 
-                return Ok(result);
-            }
-            else { 
-
-                return BadRequest(result);
-            }
-
-        }
-
-
-        [HttpDelete]
-        [Route("Delete/{IdEmpleado}")]
-        public IActionResult Delete(int IdEmpleado) {
-            
-            var result = _empleado.Delete(IdEmpleado);
+            var result = _userProfile.ChangeStatus(IdUserProfile, Status);
             if (result.Correct)
             {
                 return Ok(result);
@@ -62,9 +58,9 @@ namespace PL_Angular.Server.Controllers
 
         [HttpPost]
         [Route("Add")]
-        public IActionResult Add([FromBody] ML.Empleado empleado) {
-
-            var result = _empleado.Add(empleado);
+        public IActionResult Add([FromBody] ML.UserProfile userProfile) 
+        {
+            var result = _userProfile.Add(userProfile);
             if (result.Correct)
             {
                 return Ok(result);
@@ -72,13 +68,14 @@ namespace PL_Angular.Server.Controllers
             else {
                 return BadRequest(result);
             }
+
         }
 
         [HttpPut]
-        [Route("Update/{IdEmpleado}")]
-        public IActionResult Update([FromBody] ML.Empleado empleado, int IdEmpleado) {
+        [Route("Update/{IdUserProfile}")]
+        public IActionResult Update(int IdUserProfile, [FromBody] ML.UserProfile userProfile) {
 
-            var result = _empleado.Update(empleado, IdEmpleado);
+            var result = _userProfile.Update(IdUserProfile, userProfile);
             if (result.Correct)
             {
                 return Ok(result);
@@ -87,7 +84,6 @@ namespace PL_Angular.Server.Controllers
                 return BadRequest(result);
             }
         }
-
 
 
     }

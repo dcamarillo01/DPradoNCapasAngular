@@ -56,7 +56,7 @@ namespace ML
         public byte[]? Imagen { get; set; }
         public string? ImagenBase64 { get; set; }
         public List<object>? Usuarios { get; set; }
-        public ML.Direccion? Direccion { get; set; }
+        public Direccion? Direccion { get; set; }
 
         public bool? Status { get; set; }
 

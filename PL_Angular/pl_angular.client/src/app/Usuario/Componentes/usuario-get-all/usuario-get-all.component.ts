@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioAPIService} from '../../Servicios/usuario-api.service';
 import { Result} from '../../../Modelos/Result';
-import { Usuario} from '../../../Modelos/Usuario';
+import { Usuario} from '../../../Modelos/Usuario/Usuario';
 
 
 
@@ -25,10 +25,12 @@ export class UsuarioGetAllComponent implements OnInit {
   apellidoPaterno!: string;
   apellidoMaterno!: string;
 
+  busquedaAbierta : boolean = false;
 
 
 
   constructor(private usuarioApi: UsuarioAPIService){}
+
 
 
   ngOnInit(): void {
@@ -55,6 +57,8 @@ export class UsuarioGetAllComponent implements OnInit {
     // this.usuario.nombre = this.nombre;
 
   }
+
+  
 
   getAllUsuarios(){
 

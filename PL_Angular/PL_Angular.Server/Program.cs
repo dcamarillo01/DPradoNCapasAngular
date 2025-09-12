@@ -28,6 +28,9 @@ builder.Services.AddScoped<BL.Colonia>();
 //Empleado
 builder.Services.AddScoped<BL.Empleado>();
 
+//UserProfile
+builder.Services.AddScoped<BL.UserProfile>();
+
 builder.Services.Configure<ApiBehaviorOptions>(options =>
 {
     options.SuppressModelStateInvalidFilter = true;

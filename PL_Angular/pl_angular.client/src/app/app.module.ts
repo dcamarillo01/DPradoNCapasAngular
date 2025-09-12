@@ -9,7 +9,11 @@ import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { UsuarioGetAllComponent } from './Usuario/Componentes/usuario-get-all/usuario-get-all.component';
 import { UsuarioFormComponent } from './Usuario/Componentes/usuario-form/usuario-form.component';
-import { FlatpickrModule } from 'angularx-flatpickr'
+import { FlatpickrModule } from 'angularx-flatpickr';
+import { EmpleadoGetAllComponent } from './Empleado/Componentes/get-all/get-all.component';
+import { EmpleadoFormComponent } from './Empleado/Componentes/empleado-form/empleado-form.component';
+import { UserProfileComponent } from './UserPofile/Componentes/user-profile/user-profile.component';
+import { AccoutnsComponent } from './UserPofile/Componentes/accoutns/accoutns.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +22,10 @@ import { FlatpickrModule } from 'angularx-flatpickr'
     FooterComponent,
     UsuarioGetAllComponent,
     UsuarioFormComponent,
+    EmpleadoGetAllComponent,
+    EmpleadoFormComponent,
+    UserProfileComponent,
+    AccoutnsComponent,
   ],
   imports: [
     BrowserModule, HttpClientModule,

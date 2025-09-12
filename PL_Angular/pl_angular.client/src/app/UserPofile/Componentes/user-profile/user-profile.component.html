@@ -1,0 +1,43 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+
+            <div class="row">
+                <div class="col">
+                    <form>
+                        <div class="row">
+                            <div class="col">
+                                <label>UserName</label>
+                                <input name="userName" type="text" [(ngModel)]="user.userName"/>
+                            </div>
+                            <div class="col">
+                                <label>Email</label>
+                                <input name="email" type="text" [(ngModel)]="user.email">
+                            </div>
+                            <div class="col">
+                                <label>Password</label>
+                                <input name="password" type="password" [(ngModel)]="user.passwordHash"/>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <button (click)="registrarUsuario(user)"  >Register</button>
+                        </div>
+
+                          <div class="col">
+                                <label class="form-label">Rol</label>
+                            <select name="rol" class="form-select" [(ngModel)]="selectedRol" >
+                             <option  [value]="0"><-Selecciona un Rol-></option>
+                             <option  [value]="1">Administrador</option>
+                             <option  [value]="2">JefeDirecto</option>
+                             <option  [value]="3">Empleado</option>
+                             </select>
+                            </div>
+       
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
