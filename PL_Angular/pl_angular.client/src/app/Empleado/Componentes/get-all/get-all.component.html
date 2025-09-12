@@ -1,0 +1,109 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+
+            <div class="row justify-content-end">
+                <div class="col">
+                    <h2>Empleados</h2>
+                </div>
+                <div class="col-2 btn-group">
+                    <button class="btn btn-outline-primary" [routerLink]="['/EmpleadoForm',0]"><i class="bi bi-person-plus"></i></button>
+                    <button class="btn btn-outline-primary" type="button" (click)="busquedaAbierta=!busquedaAbierta"><i class="bi bi-search"></i></button>
+                </div>
+            </div>
+            
+            <!-- =============================================== BUSQUEDA ABIERTA ============================================== -->
+
+                        <!-- Busqueda Abierta  -->
+<div class="row" [hidden]="!busquedaAbierta" style="padding-bottom: 20px;">
+    <div class="col">
+        <form >
+            <div class="row">
+                 <div class="col">
+                                <label class="form-label">Nombre</label>
+                                <input name="nombre" type="string" (input)="getNombre($event)" #nombre (input)="getAll()" placeholder="Ingresa nombre" class="form-control"/>
+                            </div>
+                            <div class="col">
+                                <label class="form-label">ApellidoPaterno</label>
+                                <input  name="apellidoPaterno"type="string" (input)="getApellidoPaterno($event)" #paterno (input)="getAll()" placeholder="Ingresa apellido" class="form-control"/>
+
+                            </div>
+                            <div class="col">
+                                <label class="form-label">ApellidoMaterno</label>
+                                <input name="apellidoMaterno" type="string" (input)="getApellidoMaterno($event)" #materno (input)="getAll()" placeholder="Ingresa apellido" class="form-control"/>
+
+                            </div>
+                             <div class="col">
+                                <label class="form-label">Departamento</label>
+                            <select name="rol" class="form-select" [(ngModel)]="selectedDepartamento" (change)="getAll()" >
+                             <option  [value]="0"><-Selecciona un Departamento-></option>
+                             <option  [value]="1">Sistemas</option>
+                             <option  [value]="2">Recursos Humanos</option>
+                             <option  [value]="3">Administracion</option>
+                             <option  [value]="4">Animacion</option>
+                             <option  [value]="5">Mecatronica</option>
+                            
+                             </select>
+                            </div>
+       
+            </div>
+   
+        </form>
+    </div>
+</div>
+
+            <!-- =============================================== TABLA EMPLEADOS ======================================================== -->
+
+            <div class="row">
+                <div class="col table-responsive" >
+                    
+                    <table class="table table-sm  table-dark">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Id</th>
+                                <th>Nombre</th>
+                                <th>Apellidos</th>
+                                <th>Nacimiento</th>
+                                <th>RFC</th>
+                                <th>CURP</th>
+                                <th>NSS</th>
+                                <th>Ingreso</th>
+                                <th>Departamento</th>
+                                <th>SalarioBase</th>
+                                <th>#Faltas</th>
+                                <th>Cuenta</th>
+                                <th>Editar</th>
+                                <th>Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let empleado of Empleados">
+                            <tr>
+                                <td>{{empleado.idEmpleado}}</td>
+                                <td>{{empleado.nombre}}</td>
+                                <td>{{empleado.apellidoPaterno}} {{empleado.apellidoMaterno}}</td>
+                                <td>{{empleado.fechaNacimiento}}</td>
+                                <td>{{empleado.rfc}}</td>
+                                <td>{{empleado.curp}}</td>
+                                <td>{{empleado.nss}}</td>
+                                <td>{{empleado.fechaIngreso}}</td>
+                                <td>{{empleado.departamento?.descripcion}}</td>
+                                <td>{{empleado.salarioBase}}</td>
+                                <td>{{empleado.noFaltas}}</td>
+                                <td>
+                                     <button class="btn btn-info" [routerLink]="['/UserProfile',empleado.idEmpleado,empleado.nombre, empleado.apellidoPaterno,empleado.departamento?.descripcion]" >Hola</button>
+                                </td>
+                               <td>
+                                    <button class="btn btn-warning" [routerLink]="['/EmpleadoForm',empleado.idEmpleado]"><i class="bi bi-pencil-square"></i></button>
+                                </td> 
+                                <td>
+                                    <button class="btn btn-danger" (click)="delete(empleado.idEmpleado!)" ><i class="bi bi-person-dash"></i></button>
+                                </td> 
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

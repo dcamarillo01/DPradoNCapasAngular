@@ -1,0 +1,39 @@
+<p>accoutns works!</p>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+
+
+            <div class="row">
+                <div class="col">
+                    <table class="table table-sm">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Status</th>
+                                <th>UserName</th>
+                                <th>Email</th>
+                                <th>PasswordHash</th>
+                            </tr>                            
+                        </thead>
+                        <tbody *ngFor="let account of userProfiles">
+                            <tr>
+                                <td>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" [(ngModel)]="account.status" type="checkbox" role="switch" id="flexSwitchCheckDefault"
+                                        (change)="deactivateAccount(account.idUserProfile!,account.status!)">
+                                    </div>
+                                </td>
+                                <td>{{account.userName}}</td>
+                                <td>{{account.email}}</td>
+                                <td>{{account.passwordHash}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

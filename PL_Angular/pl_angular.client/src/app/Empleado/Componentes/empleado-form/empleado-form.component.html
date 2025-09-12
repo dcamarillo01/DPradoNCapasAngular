@@ -1,0 +1,99 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="row">
+    <div class="col-6 justify-content-end">
+        <h1>Registro de Empleados</h1>
+    </div>
+</div>
+<div class="row justify-content-end" style="padding-bottom: 20px;">
+    <div class="col-1">
+        <button class="btn btn-danger" style="width: 100px;" routerLink="/EmpleadoGetAll"><i class="bi bi-arrow-bar-right"></i></button>
+    </div>
+</div>
+            <div class="row shadow-lg p-3 mb-5 bg-body rounded">
+                <div class="col">
+                    <form>
+                        <div class="row">
+                            <div class="col">
+                                 <label>Nombre</label>
+                                 <input name="nombre" type="text" class="form-control" placeholder="Nombre" [(ngModel)]="empleado.nombre"/>
+                            </div>
+                            <div class="col">
+                                 <label>Apellido Paterno</label>
+                                 <input name="nombre" type="text" class="form-control" placeholder="Nombre" [(ngModel)]="empleado.apellidoPaterno"/>
+                            </div>
+                            <div class="col">
+                                 <label>Apellido Materno</label>
+                                 <input name="nombre" type="text" class="form-control" placeholder="Nombre" [(ngModel)]="empleado.apellidoMaterno"/>
+                            </div>
+                             <div class="col">
+                                <label class="form-label">Departamento</label>
+                            <select name="rol" class="form-select" [(ngModel)]="selectedDepartamento">
+                             <option  [value]="0"><-Selecciona un Departamento</option>
+                             <option  [value]="1">Sistemas</option>
+                             <option  [value]="2">Recursos Humanos</option>
+                             <option  [value]="3">Administracion</option>
+                             <option  [value]="4">Animacion</option>
+                             <option  [value]="5">Mecatronica</option>
+
+
+                            
+                             </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                             <div class="col">
+                                <label class="form-label">Fecha de Nacimiento</label>
+                                  <input class="form-control" name="fechaNacimiento"
+                                  [(ngModel)]="empleado.fechaNacimiento"
+                                type="text"
+                                mwlFlatpickr
+                                [altInput]="true"
+                                [altFormat]="'d-m-Y'"
+                                [dateFormat]="'d-m-Y'"
+                                placeholder="Selecciona una fecha"
+                                />
+                            </div>
+                            <div class="col">
+                                <label class="form-label">Fecha de Ingreso</label>
+                                  <input class="form-control" name="fechaIngreso"
+                                  [(ngModel)]="empleado.fechaIngreso"
+                                type="text"
+                                mwlFlatpickr
+                                [altInput]="true"
+                                [altFormat]="'d-m-Y'"
+                                [dateFormat]="'d-m-Y'"
+                                placeholder="Selecciona una fecha"
+                                />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label>CURP</label>
+                                <input name="curp" type="text" class="form-control" placeholder="CURP" [(ngModel)]="empleado.curp"/>
+                            </div>
+                            <div class="col">
+                                <label>RFC</label>
+                                <input name="rfc" type="text" class="form-control" placeholder="RFC" [(ngModel)]="empleado.rfc" />
+                            </div>
+                            <div class="col">
+                                <label>NSS</label>
+                                <input name="nss" type="text" class="form-control" placeholder="RFC" [(ngModel)]="empleado.nss" />
+                            </div>
+                            <div class="col">
+                                <label>Salario Base</label>
+                                <input name="salarioBase" type="number" class="form-control" placeholder="Salario Base" [(ngModel)]="empleado.salarioBase"/>
+                            </div>
+                        </div>
+                         <div class="d-flex justify-content-end gap-2 mt-4">
+                        <a class="btn btn-outline-secondary" routerLink="/UsuarioGetAll">Cancelar</a>
+                        <button type="submit" class="btn btn-primary" (click)="registrarEmpleado(empleado)">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

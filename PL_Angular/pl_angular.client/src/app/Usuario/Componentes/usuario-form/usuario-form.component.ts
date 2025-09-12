@@ -1,10 +1,10 @@
 import { Component , OnInit} from '@angular/core';
-import {Usuario} from '../../../Modelos/Usuario';
-import {Rol} from '../../../Modelos/Rol';
-import {Direccion} from '../../../Modelos/Direccion';
-import {Estado} from '../../../Modelos/Estado';
-import {Municipio} from '../../../Modelos/Municipio';
-import {Colonia} from '../../../Modelos/Colonia';
+import {Usuario} from '../../../Modelos/Usuario/Usuario';
+import {Rol} from '../../../Modelos/Usuario/Rol';
+import {Direccion} from '../../../Modelos/Usuario/Direccion';
+import {Estado} from '../../../Modelos/Usuario/Estado';
+import {Municipio} from '../../../Modelos/Usuario/Municipio';
+import {Colonia} from '../../../Modelos/Usuario/Colonia';
 import {Result} from '../../../Modelos/Result';
 import { FormsModule } from '@angular/forms';
 

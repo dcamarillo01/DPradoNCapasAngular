@@ -8,7 +8,7 @@
 
         public List<object>? Estados { get; set; }
 
-        public ML.Municipio? Municipio { get; set; }
+        public Municipio? Municipio { get; set; }
 
     }
 }

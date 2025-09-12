@@ -8,7 +8,7 @@
 
         public int CodigoPostal { get; set; }
 
-        public ML.Municipio? Municipio { get; set; }
+        public Municipio? Municipio { get; set; }
         public List<object>? Colonias { get; set; }
 
     }

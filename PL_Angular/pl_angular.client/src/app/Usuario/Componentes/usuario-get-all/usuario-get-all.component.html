@@ -10,28 +10,30 @@
             <h1>Usuarios</h1>
 
             <div class="row justify-content-end">
-                <div class="col-1">
-                    <button class="btn btn-primary" type="button" [routerLink]="['/UsuarioForm']"><i class="bi bi-person-plus"></i></button>
+                <div class="col-2 btn-group">
+                    <button class="btn btn-outline-primary" type="button" [routerLink]="['/UsuarioForm',0]"><i class="bi bi-person-plus"></i></button>
+                    <button class="btn btn-outline-primary" type="button" (click)="busquedaAbierta=!busquedaAbierta"><i class="bi bi-search"></i></button>
+
                 </div>
             </div>
 
             <!-- Busqueda Abierta  -->
-<div class="row">
+<div class="row" [hidden]="!busquedaAbierta" style="padding-bottom: 20px;">
     <div class="col">
-        <form>
+        <form >
             <div class="row">
                  <div class="col">
                                 <label class="form-label">Nombre</label>
-                                <input name="nombre" type="string" (input)="getNombre($event)" (input)="getAllUsuarios()" placeholder="Ingresa nombre" class="form-control"/>
+                                <input name="nombre" type="string" (input)="getNombre($event)" #nombre (input)="getAllUsuarios()" placeholder="Ingresa nombre" class="form-control"/>
                             </div>
                             <div class="col">
                                 <label class="form-label">ApellidoPaterno</label>
-                                <input  name="apellidoPaterno"type="string" (input)="getApellidoPaterno($event)" (input)="getAllUsuarios()" placeholder="Ingresa apellido" class="form-control"/>
+                                <input  name="apellidoPaterno"type="string" (input)="getApellidoPaterno($event)" #paterno (input)="getAllUsuarios()" placeholder="Ingresa apellido" class="form-control"/>
 
                             </div>
                             <div class="col">
                                 <label class="form-label">ApellidoMaterno</label>
-                                <input name="apellidoMaterno" type="string" (input)="getApellidoMaterno($event)" (input)="getAllUsuarios()" placeholder="Ingresa apellido" class="form-control"/>
+                                <input name="apellidoMaterno" type="string" (input)="getApellidoMaterno($event)" #materno (input)="getAllUsuarios()" placeholder="Ingresa apellido" class="form-control"/>
 
                             </div>
                              <div class="col">
@@ -44,6 +46,7 @@
                             
                              </select>
                             </div>
+       
             </div>
    
         </form>
