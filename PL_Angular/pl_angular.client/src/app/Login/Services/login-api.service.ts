@@ -14,6 +14,8 @@ export class LoginApiService {
 
   makeLogin(login: Login):Observable<Result>{
 
+    console.log(login);
+
     const url = "http://localhost:5173/api/Login/LoginUser";
 
     return this.http.post<Result>(url,login);

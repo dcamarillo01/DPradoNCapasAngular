@@ -22,14 +22,18 @@ export class LoginComponent implements OnInit {
   }
 
 
-  makeLogin(login: Login){
+  makeLogin(){
 
-    this.loginApi.makeLogin(login).subscribe((data:Result)=>{
+      console.log(this.login);
+
+
+    this.loginApi.makeLogin(this.login).subscribe((data:Result)=>{
 
       if(data.correct){
 
         this.token = data.object;
         localStorage.setItem('jwt_token', this.token);
+        console.log(this.token);
       }
 
     });

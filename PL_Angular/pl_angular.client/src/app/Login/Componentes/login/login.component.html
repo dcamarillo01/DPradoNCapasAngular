@@ -13,11 +13,12 @@
                                 <input name="email" type="text" class="form-control" [(ngModel)]="login.email" />
                             </div>
                             <div class="col">
-                                <label>Correo</label>
-                                <input  name="password" type="text" class="form-control" [(ngModel)]="login.password" />
+                                <label>Password</label>
+                                <input name="password" type="password" class="form-control" [(ngModel)]="login.password" />
+                                <p>{{login.password}}</p>
                             </div>
                             <div>
-                                <button (click)="makeLogin(login)" class="btn btn-primary" >Ingresar</button>
+                                <button (click)="makeLogin()" class="btn btn-primary" >Ingresar</button>
                             </div>
                         </div>
                     </form>

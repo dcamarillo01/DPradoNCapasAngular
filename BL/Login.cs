@@ -27,7 +27,7 @@ namespace BL
             try
             {
 
-                var query = _context.LoginInfo.FromSqlRaw($"GetByEmailPassword '{Login.Email}','{Login.Passsword}'").AsEnumerable().SingleOrDefault();
+                var query = _context.LoginInfo.FromSqlRaw($"GetByEmailPassword '{Login.Email}','{Login.Password}'").AsEnumerable().SingleOrDefault();
 
                 if (query != null)
                 {
