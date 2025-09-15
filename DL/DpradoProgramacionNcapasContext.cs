@@ -49,7 +49,7 @@ public partial class DpradoProgramacionNcapasContext : DbContext
 
     public virtual DbSet<DTOs.LoginInfo> LoginInfo { get; set; }
     public virtual DbSet<DTOs.GetBoss> GetBosses { get; set; }
-    public virtual DbSet<DTOs.GetEmailByIdPermiso> GetEmail { get; set; }
+    public virtual DbSet<DTOs.GetEmailByIdPermiso> GetEmailByIdPermisos { get; set; }
 
 
 
