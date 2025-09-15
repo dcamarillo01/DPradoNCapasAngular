@@ -47,12 +47,34 @@ public partial class DpradoProgramacionNcapasContext : DbContext
 
     public virtual DbSet<VwUsuario> VwUsuarios { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=.; Database=DPradoProgramacionNCapas; TrustServerCertificate=true; User ID=sa; Password=pass@word1;");
+    public virtual DbSet<DTOs.LoginInfo> LoginInfo { get; set; }
+    public virtual DbSet<DTOs.GetBoss> GetBosses { get; set; }
+    public virtual DbSet<DTOs.GetEmailByIdPermiso> GetEmailByIdPermisos { get; set; }
+
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
+
     {
+
+        modelBuilder.Entity<DTOs.LoginInfo>(entity =>
+        {
+            entity.HasNoKey();
+        }
+           );
+
+        modelBuilder.Entity<DTOs.GetBoss>(entity =>
+        {
+            entity.HasNoKey();
+        }
+           );
+
+        modelBuilder.Entity<DTOs.GetEmailByIdPermiso>(entity =>
+        {
+            entity.HasNoKey();
+        }
+           );
+
         modelBuilder.Entity<Colonium>(entity =>
         {
             entity.HasKey(e => e.IdColonia).HasName("PK__Colonia__A1580F665C86DDE3");

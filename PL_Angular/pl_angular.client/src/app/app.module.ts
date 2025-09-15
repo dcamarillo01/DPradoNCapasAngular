@@ -14,6 +14,7 @@ import { EmpleadoGetAllComponent } from './Empleado/Componentes/get-all/get-all.
 import { EmpleadoFormComponent } from './Empleado/Componentes/empleado-form/empleado-form.component';
 import { UserProfileComponent } from './UserPofile/Componentes/user-profile/user-profile.component';
 import { AccoutnsComponent } from './UserPofile/Componentes/accoutns/accoutns.component';
+import { LoginComponent } from './Login/Componentes/login/login.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { AccoutnsComponent } from './UserPofile/Componentes/accoutns/accoutns.co
     EmpleadoFormComponent,
     UserProfileComponent,
     AccoutnsComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule, HttpClientModule,

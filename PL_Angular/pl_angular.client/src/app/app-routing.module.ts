@@ -6,6 +6,7 @@ import { EmpleadoGetAllComponent } from './Empleado/Componentes/get-all/get-all.
 import {EmpleadoFormComponent} from './Empleado/Componentes/empleado-form/empleado-form.component';
 import {UserProfileComponent} from './UserPofile/Componentes/user-profile/user-profile.component';
 import { AccoutnsComponent } from './UserPofile/Componentes/accoutns/accoutns.component';
+import {LoginComponent} from './Login/Componentes/login/login.component';
 import { AppComponent } from './app.component';
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'EmpleadoForm/:id', component: EmpleadoFormComponent},
   {path: 'UserProfile/:id/:nombre/:apellido/:departamento', component: UserProfileComponent},
   {path: 'Accoutns', component: AccoutnsComponent},
+  {path: 'Login',component: LoginComponent},
   {path: '*', component: AppComponent}
 
 ];
