@@ -9,25 +9,32 @@ namespace PL_Angular.Server.Controllers
     {
 
         private readonly BL.Permiso _permiso;
-        public PermisoController(BL.Permiso permiso) => _permiso = permiso;
+        private readonly BL.HistorialPermiso _permisoHistorial;
+        public PermisoController(BL.Permiso permiso, BL.HistorialPermiso historialPermiso)
+        {
+            _permiso = permiso;
+            _permisoHistorial = historialPermiso;
+        }
 
 
         [HttpPost]
-        public IActionResult SolicitarPermiso(ML.Permiso permiso) {
+        [Route("SolicitarPermiso")]
+        public IActionResult SolicitarPermiso([FromBody] ML.Permiso permiso) {
 
             var result = _permiso.Add(permiso);
             if (result.Correct)
             {
                 return Ok(result);
             }
-            else { 
+            else {
                 return BadRequest(result);
             }
-        
+
         }
 
 
         [HttpGet]
+        [Route("GetAll")]
         public IActionResult GetAll() { 
         
             var result = _permiso.GetAll();
@@ -38,6 +45,22 @@ namespace PL_Angular.Server.Controllers
             else {
                 return BadRequest(result);
             }
+        }
+
+        [HttpPut]
+        [Route("AprovarRechazar")]
+        public IActionResult AprovarRechazar([FromBody]ML.HistorialPermiso historial) {
+
+            var result = _permisoHistorial.AprobarRechazarSolicitud(historial);
+            if (result.Correct)
+            {
+
+                return Ok(result);
+            }
+            else {
+                return BadRequest(result);
+            }
+        
         }
 
 

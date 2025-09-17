@@ -17,6 +17,9 @@ import { AccoutnsComponent } from './UserPofile/Componentes/accoutns/accoutns.co
 import { LoginComponent } from './Login/Componentes/login/login.component';
 import { PermisoComponent } from './Permiso/Componentes/permiso/permiso.component';
 import { GetAllPermisosComponent } from './Permiso/Componentes/get-all-permisos/get-all-permisos.component';
+import Swal from 'sweetalert2';
+import { HistorialComponent } from './Permiso/Componentes/historial/historial.component';
+
 
 @NgModule({
   declarations: [
@@ -32,6 +35,7 @@ import { GetAllPermisosComponent } from './Permiso/Componentes/get-all-permisos/
     LoginComponent,
     PermisoComponent,
     GetAllPermisosComponent,
+    HistorialComponent,
   ],
   imports: [
     BrowserModule, HttpClientModule,

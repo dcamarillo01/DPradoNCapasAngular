@@ -39,6 +39,7 @@ builder.Services.AddScoped<BL.Login>();
 
 //Permiso
 builder.Services.AddScoped<BL.Permiso>();
+builder.Services.AddScoped<BL.HistorialPermiso>();
 
 builder.Services.Configure<ApiBehaviorOptions>(options =>
 {

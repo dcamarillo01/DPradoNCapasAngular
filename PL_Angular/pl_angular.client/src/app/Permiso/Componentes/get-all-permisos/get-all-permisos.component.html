@@ -17,7 +17,8 @@
                                 <th>HoraFin</th>
                                 <th>Motivo</th>
                                 <th>Estado</th>
-                                <th>Eliminar</th>
+                                <th>Aprovar</th>
+                                <th>Rechazar</th>
                             </tr>
                         </thead>
                         <tbody *ngFor="let permiso of permisos">
@@ -35,7 +36,10 @@
                                     }@else{
                                         <td>Rechazado</td>  
                                     }
-                                    <td><button class="btn btn-danger">Eliminar</button></td>
+                                    <td>
+                                        <button class="btn btn-success" (click)="observaciones(permiso.idPermiso, 2)">Aprovar</button>
+                                    </td>
+                                    <td><button class="btn btn-danger" (click)="observaciones(permiso.idPermiso, 3)">Rechazar</button></td>
                                 </tr>
                         </tbody>
                     </table>
@@ -44,3 +48,4 @@
         </div>
     </div>
 </div>
+
