@@ -15,6 +15,8 @@ import { EmpleadoFormComponent } from './Empleado/Componentes/empleado-form/empl
 import { UserProfileComponent } from './UserPofile/Componentes/user-profile/user-profile.component';
 import { AccoutnsComponent } from './UserPofile/Componentes/accoutns/accoutns.component';
 import { LoginComponent } from './Login/Componentes/login/login.component';
+import { PermisoComponent } from './Permiso/Componentes/permiso/permiso.component';
+import { GetAllPermisosComponent } from './Permiso/Componentes/get-all-permisos/get-all-permisos.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { LoginComponent } from './Login/Componentes/login/login.component';
     UserProfileComponent,
     AccoutnsComponent,
     LoginComponent,
+    PermisoComponent,
+    GetAllPermisosComponent,
   ],
   imports: [
     BrowserModule, HttpClientModule,

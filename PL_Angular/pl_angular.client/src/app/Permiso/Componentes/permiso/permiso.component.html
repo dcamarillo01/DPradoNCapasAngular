@@ -1,0 +1,62 @@
+
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+
+
+            <div class="row">
+                <div class="col">
+                    <form>
+                        <div class="row">
+                            <!-- calendario -->
+                            <div class="col">
+                                <label class="form-label">Fecha de Nacimiento</label>
+                                <!-- <input name="fechaNacimiento" type="date" [(ngModel)]="usuario.fechaNacimiento" class="form-control"/> -->
+                                  <input class="form-control d-none" name="fechaNacimiento" 
+                                  [(ngModel)]="fechasSolicitadas" 
+                                type="text"
+                                mwlFlatpickr
+                                [altInput]="true"
+                                [altFormat]="'Y-m-d'"
+                                [dateFormat]="'Y-m-d'"
+                                [mode]="'range'"
+                                [inline]="true"
+                                placeholder="Selecciona una fecha"
+                                />
+                                <p>{{fechasSolicitadas}}</p>
+                                <!-- <p>{{fechaInicial}}</p>
+                                <p>{{fechaFinal}}</p> -->
+                            </div>
+                            <!-- detalles -->
+                             <div class="col">
+                                <div class="row">
+                                        <label>HoraInicio</label>
+                                        <input class="form-control" name="horaInicio"
+                                        [(ngModel)]="permiso.horaInicio"
+                                        type="text" (click)="obtenerFechas()"  />
+                                        <label>HoraFin</label>
+                                        <input class="form-control" name="horaFin"
+                                        [(ngModel)]="permiso.horaFin"
+                                        type="text" />
+
+                                </div>
+                                <div class="row">
+                                    <label>Motivo</label>
+                                    <input class="form-control" name="motivo"
+                                    [(ngModel)]="permiso.motivo"
+                                    type="text"/>
+                                </div>
+                             </div>
+                             <div class="row justify-content-end">
+                                <div class="col-2">
+                                    <button class="btn btn-success" (click)="solicitarPermiso()">Solicitar</button>
+                                </div>
+                             </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

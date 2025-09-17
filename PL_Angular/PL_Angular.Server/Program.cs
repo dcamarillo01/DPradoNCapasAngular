@@ -37,6 +37,9 @@ builder.Services.AddScoped<BL.UserProfile>();
 //Login
 builder.Services.AddScoped<BL.Login>();
 
+//Permiso
+builder.Services.AddScoped<BL.Permiso>();
+
 builder.Services.Configure<ApiBehaviorOptions>(options =>
 {
     options.SuppressModelStateInvalidFilter = true;
