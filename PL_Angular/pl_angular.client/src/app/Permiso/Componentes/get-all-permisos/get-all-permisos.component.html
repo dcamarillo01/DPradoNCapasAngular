@@ -1,0 +1,56 @@
+
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+
+            <div class="row pb-2">
+                <div class="col">
+                    <h1>Permisos</h1>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <table class="table table-sm">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Id</th>
+                                <th>FechaInicio</th>
+                                <th>FechaFin</th>
+                                <th>HoraInicio</th>
+                                <th>HoraFin</th>
+                                <th>Motivo</th>
+                                <th>Estado</th>
+                                <th>Aprovar</th>
+                                <th>Rechazar</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let permiso of permisos">
+                                <tr>
+                                    <td>{{permiso.idPermiso}}</td>
+                                    <td>{{permiso.fechaInicio}}</td>
+                                    <td>{{permiso.fechaFin}}</td>
+                                    <td>{{permiso.horaInicio}}</td>
+                                    <td>{{permiso.horaFin}}</td>
+                                    <td>{{permiso.motivo}}</td>
+                                    @if(permiso.statusPermiso.idStatusPermiso==1){
+                                        <td>Pendiente</td>
+                                    }@else if(permiso.statusPermiso.idStatusPermiso==2){
+                                        <td>Aprobado</td>
+                                    }@else{
+                                        <td>Rechazado</td>  
+                                    }
+                                    <td>
+                                        <button class="btn btn-success" (click)="observaciones(permiso.idPermiso, 2)">Aprovar</button>
+                                    </td>
+                                    <td><button class="btn btn-danger" (click)="observaciones(permiso.idPermiso, 3)">Rechazar</button></td>
+                                </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

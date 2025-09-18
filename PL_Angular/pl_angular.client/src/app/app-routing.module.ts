@@ -7,7 +7,11 @@ import {EmpleadoFormComponent} from './Empleado/Componentes/empleado-form/emplea
 import {UserProfileComponent} from './UserPofile/Componentes/user-profile/user-profile.component';
 import { AccoutnsComponent } from './UserPofile/Componentes/accoutns/accoutns.component';
 import {LoginComponent} from './Login/Componentes/login/login.component';
+import { PermisoComponent } from './Permiso/Componentes/permiso/permiso.component';
+import { GetAllPermisosComponent } from './Permiso/Componentes/get-all-permisos/get-all-permisos.component';
+import { HistorialComponent } from './Permiso/Componentes/historial/historial.component';
 import { AppComponent } from './app.component';
+
 
 const routes: Routes = [
 
@@ -18,6 +22,9 @@ const routes: Routes = [
   {path: 'UserProfile/:id/:nombre/:apellido/:departamento', component: UserProfileComponent},
   {path: 'Accoutns', component: AccoutnsComponent},
   {path: 'Login',component: LoginComponent},
+  {path: 'Permiso', component: PermisoComponent},
+  {path: 'Permisos',component: GetAllPermisosComponent},
+  {path: 'Historial', component: HistorialComponent},
   {path: '*', component: AppComponent}
 
 ];

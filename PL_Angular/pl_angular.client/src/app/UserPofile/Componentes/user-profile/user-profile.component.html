@@ -2,30 +2,29 @@
 <div class="container">
     <div class="row">
         <div class="col">
+            <div class="row pb-4">
+                <div class="col">
+                    <h1>Registro de Usuarios</h1>
+                </div>
+            </div>
 
-            <div class="row">
+            <div class="row shadow-lg p-4 rounded-5">
                 <div class="col">
                     <form>
                         <div class="row">
                             <div class="col">
-                                <label>UserName</label>
-                                <input name="userName" type="text" [(ngModel)]="user.userName"/>
+                                <label class="form-label">UserName</label>
+                                <input class="form-control" name="userName" type="text" [(ngModel)]="user.userName"/>
                             </div>
                             <div class="col">
-                                <label>Email</label>
-                                <input name="email" type="text" [(ngModel)]="user.email">
+                                <label class="form-label">Email</label>
+                                <input class="form-control" name="email" type="text" [(ngModel)]="user.email">
                             </div>
                             <div class="col">
-                                <label>Password</label>
-                                <input name="password" type="password" [(ngModel)]="user.passwordHash"/>
+                                <label class="form-label">Password</label>
+                                <input class="form-control" name="password" type="password" [(ngModel)]="user.passwordHash"/>
                             </div>
-                        </div>
-
-                        <div class="row">
-                            <button (click)="registrarUsuario(user)"  >Register</button>
-                        </div>
-
-                          <div class="col">
+                             <div class="col">
                                 <label class="form-label">Rol</label>
                             <select name="rol" class="form-select" [(ngModel)]="selectedRol" >
                              <option  [value]="0"><-Selecciona un Rol-></option>
@@ -34,6 +33,14 @@
                              <option  [value]="3">Empleado</option>
                              </select>
                             </div>
+                        </div>
+                       
+                          
+                        <div class="row pt-4 justify-content-end" >
+                            <div class="col-1">
+                                <button class="btn btn-success"  (click)="registrarUsuario(user)">Registrar</button>
+                            </div>
+                        </div>
        
                     </form>
                 </div>

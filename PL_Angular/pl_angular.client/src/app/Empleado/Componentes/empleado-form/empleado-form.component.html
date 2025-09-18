@@ -15,17 +15,17 @@
             <div class="row shadow-lg p-3 mb-5 bg-body rounded">
                 <div class="col">
                     <form>
-                        <div class="row">
+                        <div class="row"  style="padding-top: 10px;">
                             <div class="col">
-                                 <label>Nombre</label>
+                                 <label class="form-label">Nombre</label>
                                  <input name="nombre" type="text" class="form-control" placeholder="Nombre" [(ngModel)]="empleado.nombre"/>
                             </div>
                             <div class="col">
-                                 <label>Apellido Paterno</label>
+                                 <label class="form-label">Apellido Paterno</label>
                                  <input name="apellidoPaterno" type="text" class="form-control" placeholder="Nombre" [(ngModel)]="empleado.apellidoPaterno"/>
                             </div>
                             <div class="col">
-                                 <label>Apellido Materno</label>
+                                 <label class="form-label">Apellido Materno</label>
                                  <input name="apellidoMaterno" type="text" class="form-control" placeholder="Nombre" [(ngModel)]="empleado.apellidoMaterno"/>
                             </div>
                              <div class="col">
@@ -37,13 +37,10 @@
                              <option  [value]="3">Administracion</option>
                              <option  [value]="4">Animacion</option>
                              <option  [value]="5">Mecatronica</option>
-
-
-                            
                              </select>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row"  style="padding-top: 10px;">
                              <div class="col">
                                 <label class="form-label">Fecha de Nacimiento</label>
                                   <input class="form-control" name="fechaNacimiento"
@@ -68,22 +65,28 @@
                                 placeholder="Selecciona una fecha"
                                 />
                             </div>
+                            @if(empleado.idEmpleado!>0){
+                                <div class="col">
+                                    <label class="form-label">Numero de Faltas</label>
+                                    <input  name="noFaltas" type="number" class="form-control" placeholder="#Faltas" [(ngModel)]="empleado.noFaltas" />
+                                </div>
+                            }
                         </div>
-                        <div class="row">
+                        <div class="row" style="padding-top: 10px;">
                             <div class="col">
-                                <label>CURP</label>
+                                <label class="form-label">CURP</label>
                                 <input name="curp" type="text" class="form-control" placeholder="CURP" [(ngModel)]="empleado.curp"/>
                             </div>
                             <div class="col">
-                                <label>RFC</label>
+                                <label class="form-label">RFC</label>
                                 <input name="rfc" type="text" class="form-control" placeholder="RFC" [(ngModel)]="empleado.rfc" />
                             </div>
                             <div class="col">
-                                <label>NSS</label>
+                                <label class="form-label">NSS</label>
                                 <input name="nss" type="text" class="form-control" placeholder="RFC" [(ngModel)]="empleado.nss" />
                             </div>
                             <div class="col">
-                                <label>Salario Base</label>
+                                <label class="form-label">Salario Base</label>
                                 <input name="salarioBase" type="number" class="form-control" placeholder="Salario Base" [(ngModel)]="empleado.salarioBase"/>
                             </div>
                         </div>

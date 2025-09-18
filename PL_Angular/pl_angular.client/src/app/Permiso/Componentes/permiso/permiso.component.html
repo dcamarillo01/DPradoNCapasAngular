@@ -1,0 +1,82 @@
+
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+
+            <div class="row pb-4">
+                <div class="col">
+                    <h1>Solicitar Permiso</h1>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-8 shadow-lg p-4 mb-5 bg-body rounded">
+                    <form>
+                        <div class="row">
+                            <!-- calendario -->
+                            <div class="col">
+                                
+                                  <input class="form-control d-none" name="fechaNacimiento" 
+                                  [(ngModel)]="fechasSolicitadas" 
+                                type="text"
+                                mwlFlatpickr
+                                [altInput]="true"
+                                [altFormat]="'Y-m-d'"
+                                [dateFormat]="'Y-m-d'"
+                                [mode]="'range'"
+                                [inline]="true"
+                                placeholder="Selecciona una fecha"
+                                />
+                            </div>
+                            <!-- detalles -->
+                             <div class="col ">
+                                <div class="row pb-2">
+                                        <label class="form-label" >HoraInicio</label>
+                                        <input class="form-control" name="horaInicio"
+                                        [(ngModel)]="permiso.horaInicio"
+                                        type="text" (click)="obtenerFechas()" 
+                                        mwlFlatpickr
+                                        [altInput]="true"
+                                        [altFormat]="'H:i'"
+                                        [enableTime]="true"
+                                        [noCalendar]="true"
+                                        [dateFormat]="'H:i'"
+                                        placeholder="Selecciona una hora"
+                                        />
+                                       
+
+                                </div>
+                                <div class="row pb-2">
+                                     <label class="form-label" >HoraFin</label>
+                                        <input class="form-control" name="horaFin"
+                                        [(ngModel)]="permiso.horaFin"
+                                        type="text" 
+                                        mwlFlatpickr
+                                        [altInput]="true"
+                                        [altFormat]="'H:i'"
+                                        [enableTime]="true"
+                                        [noCalendar]="true"
+                                        [dateFormat]="'H:i'"
+                                        placeholder="Selecciona una hora"
+                                        />
+                                </div>
+                                <div class="row pb-2">
+                                    <label class="form-label" >Motivo</label>
+                                    <textarea class="form-control" name="motivo"
+                                    [(ngModel)]="permiso.motivo"
+                                    type="textarea"></textarea>
+                                </div>
+                             </div>
+                             <div class="row justify-content-end">
+                                <div class="col-2">
+                                    <button class="btn btn-success" (click)="solicitarPermiso()">Solicitar</button>
+                                </div>
+                             </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
