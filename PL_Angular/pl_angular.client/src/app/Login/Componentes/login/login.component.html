@@ -11,13 +11,33 @@
 
             <div class="row shadow-lg p-3 mb-5 bg-body rounded">
                 <div class="col">
-                    <form>
+                    <form >
                         <div class="row">
                             <div class="col">
                                 <label class="form-label" >Correo</label>
                                 <input  name="email" type="text" class="form-control" [(ngModel)]="login.email" id="email" #email="ngModel" 
                                 required minlength="16" pattern="/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/"
                                 />
+                                @if (email.invalid && (email.dirty || email.touched)) {
+            <div class="alert">
+              @if (email.hasError('required')) {
+                <div>
+                  Email is required.
+                </div>
+                
+              }
+              @if (email.hasError('minlength')) {
+                <p class="text-bg-danger">
+                  El correo debe tener minimo 16 caracteres
+                </p>
+              }
+              @if (email.hasError('pattern')) {
+                <div>
+                  Email is not valid.
+                </div>
+              }
+            </div>
+          }
                             </div>
                             <div class="col">
                                 <label class="form-label" >Password</label>
@@ -25,7 +45,7 @@
                                 <p>{{login.password}}</p>
                             </div>
                             <div>
-                                <button (click)="makeLogin()" class="btn btn-primary" >Ingresar</button>
+                                <button (click)="makeLogin()" class="btn btn-primary" #submit >Ingresar</button>
                             </div>
                         </div>
                     </form>
@@ -37,22 +57,4 @@
 
 
 
-          @if (email.invalid && (email.dirty || email.touched)) {
-            <div class="alert">
-              @if (email.hasError('required')) {
-                <div>
-                  Email is required.
-                </div>
-              }
-              @if (email.hasError('minlength')) {
-                <div>
-                  Email must be at least 16 characters long.
-                </div>
-              }
-              @if (email.hasError('pattern')) {
-                <div>
-                  Email is not valid.
-                </div>
-              }
-            </div>
-          }
+          
