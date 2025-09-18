@@ -2,14 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { UsuarioAPIService} from '../../Servicios/usuario-api.service';
 import { Result} from '../../../Modelos/Result';
 import { Usuario} from '../../../Modelos/Usuario/Usuario';
-
+import { FormsModule, NgModel } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-usuario-get-all',
-  standalone: false,
+  standalone: true,
   templateUrl: './usuario-get-all.component.html',
-  styleUrl: './usuario-get-all.component.css'
+  styleUrl: './usuario-get-all.component.css',
+  imports: [FormsModule, RouterModule, CommonModule],
 })
 export class UsuarioGetAllComponent implements OnInit {
 

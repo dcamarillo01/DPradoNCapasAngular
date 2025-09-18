@@ -4,15 +4,21 @@ import {Departamento} from '../../../Modelos/Empleado/Departamento';
 import {Result} from '../../../Modelos/Result';
 import {EmpleadoApiService} from '../../../Empleado/Services/empleado-api.service';
 import { ActivatedRoute } from '@angular/router'; 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { NgModel } from '@angular/forms';
+import { FlatpickrModule} from 'angularx-flatpickr';
+
 
 
 
 
 @Component({
   selector: 'app-empleado-form',
-  standalone: false,
+  standalone: true,
   templateUrl: './empleado-form.component.html',
-  styleUrl: './empleado-form.component.css'
+  styleUrl: './empleado-form.component.css',
+  imports: [FormsModule, ReactiveFormsModule, CommonModule,FlatpickrModule ],
 })
 export class EmpleadoFormComponent implements OnInit {
 

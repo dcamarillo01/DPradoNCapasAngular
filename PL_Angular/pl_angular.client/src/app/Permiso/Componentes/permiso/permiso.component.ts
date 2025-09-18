@@ -4,14 +4,20 @@ import { PermisoApiService } from '../../Servicios/permiso-api.service';
 import { Result } from '../../../Modelos/Result';
 import { Empleado } from '../../../Modelos/Empleado/Empleado';
 import { StatusPermiso } from '../../../Modelos/Permiso/StatusPermiso';
+import { NgModel, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FlatpickrModule } from 'angularx-flatpickr';
+import Swal from 'sweetalert2';
+
 
 
 
 @Component({
   selector: 'app-permiso',
-  standalone: false,
+  standalone: true,
   templateUrl: './permiso.component.html',
-  styleUrl: './permiso.component.css'
+  styleUrl: './permiso.component.css',
+  imports: [FormsModule, ReactiveFormsModule,FlatpickrModule],
+  
 })
 export class PermisoComponent implements OnInit {
 
