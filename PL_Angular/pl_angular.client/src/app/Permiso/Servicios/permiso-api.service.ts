@@ -34,5 +34,12 @@ export class PermisoApiService {
 
   }
 
+  getHistorial(historial: HistorialPermiso) : Observable<Result>{
+
+    const url = "http://localhost:5173/api/Permiso/Historial";
+    return this.http.post<Result>(url,historial);
+
+  }
+  
 
 }

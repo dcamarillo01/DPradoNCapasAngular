@@ -63,6 +63,21 @@ namespace PL_Angular.Server.Controllers
         
         }
 
+        [HttpPost]
+        [Route("Historial")]
+        public IActionResult Historial([FromBody] ML.HistorialPermiso historialPermiso) {
+
+            var result = _permisoHistorial.GetAll(historialPermiso);
+            if (result.Correct)
+            {
+
+                return Ok(result);
+            }
+            else {
+                return BadRequest(result);
+            }
+        }
+
 
     }
 }

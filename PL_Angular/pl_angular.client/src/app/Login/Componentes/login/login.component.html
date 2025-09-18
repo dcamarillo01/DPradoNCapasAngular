@@ -1,19 +1,26 @@
-<p>login works!</p>
 
 <div class="container">
-    <div class="row">
-        <div class="col">
+    <div class="row justify-content-center">
+        <div class="col-8">
             
             <div class="row">
+                <div class="col">
+                    <h1>Login</h1>
+                </div>
+            </div>
+
+            <div class="row shadow-lg p-3 mb-5 bg-body rounded">
                 <div class="col">
                     <form>
                         <div class="row">
                             <div class="col">
-                                <label>Correo</label>
-                                <input name="email" type="text" class="form-control" [(ngModel)]="login.email" />
+                                <label class="form-label" >Correo</label>
+                                <input  name="email" type="text" class="form-control" [(ngModel)]="login.email" id="email" #email="ngModel" 
+                                required minlength="16" pattern="/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/"
+                                />
                             </div>
                             <div class="col">
-                                <label>Password</label>
+                                <label class="form-label" >Password</label>
                                 <input name="password" type="password" class="form-control" [(ngModel)]="login.password" />
                                 <p>{{login.password}}</p>
                             </div>
@@ -28,3 +35,24 @@
     </div>
 </div>
 
+
+
+          @if (email.invalid && (email.dirty || email.touched)) {
+            <div class="alert">
+              @if (email.hasError('required')) {
+                <div>
+                  Email is required.
+                </div>
+              }
+              @if (email.hasError('minlength')) {
+                <div>
+                  Email must be at least 16 characters long.
+                </div>
+              }
+              @if (email.hasError('pattern')) {
+                <div>
+                  Email is not valid.
+                </div>
+              }
+            </div>
+          }

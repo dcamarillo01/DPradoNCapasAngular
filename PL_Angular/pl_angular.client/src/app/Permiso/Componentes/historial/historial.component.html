@@ -1,1 +1,64 @@
-<p>historial works!</p>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+
+            <div class="row justify-content-between pb-4">
+                <div class="col">
+                    <h1>Historial de Permisos</h1>
+                </div>
+                <div class="col-1 btn-group">
+                     <button class="btn btn-outline-primary" type="button" (click)="busquedaAbierta=!busquedaAbierta"><i class="bi bi-search"></i></button>
+                </div>
+            </div>
+
+            <!-- BUSQUEDA ABIERTA  -->
+            <div class="row shadow-lg mb-5 pt-2 pb-2 bg-body rounded" [hidden]="!busquedaAbierta" style="padding-bottom: 20px;">
+                <div class="col">
+                    <form>
+                        <div class="row">
+                            <div class="col">
+                                <input name="nombre" class="form-control" (input)="getNombre($event)" #nombre (input)="getHistorial()" placeholder="Nombre" />
+                            </div>
+                            <div class="col">
+                                <select name="status" class="form-select" [(ngModel)]="selectedStatus" (change)="getHistorial()">
+                                    <option  [value]="0"><-Selecciona un Status</option>
+                                    <option  [value]="2">Aprobado</option>
+                                    <option  [value]="3">Rechazado</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+            <!-- TABLA HISTORIAL  -->
+            <div class="row">
+                <div class="col">
+                    <table class="table table-sm">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Id</th>
+                                <th>FechaRevision</th>
+                                <th>Status</th>
+                                <th>Observaciones</th>
+                                <th>Autorizo</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let permiso of permisos">
+                            <tr>
+                                <td>{{permiso.idHistorialPermiso}}</td>
+                                <td>{{permiso.fechaRevision}}</td>
+                                <td>{{permiso.statusPermiso.descripcion}}</td>
+                                <td>{{permiso.observaciones}}</td>
+                                <td>{{permiso.aprovoRechazo.nombre}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

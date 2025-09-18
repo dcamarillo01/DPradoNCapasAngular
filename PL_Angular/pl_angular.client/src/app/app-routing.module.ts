@@ -9,7 +9,9 @@ import { AccoutnsComponent } from './UserPofile/Componentes/accoutns/accoutns.co
 import {LoginComponent} from './Login/Componentes/login/login.component';
 import { PermisoComponent } from './Permiso/Componentes/permiso/permiso.component';
 import { GetAllPermisosComponent } from './Permiso/Componentes/get-all-permisos/get-all-permisos.component';
+import { HistorialComponent } from './Permiso/Componentes/historial/historial.component';
 import { AppComponent } from './app.component';
+
 
 const routes: Routes = [
 
@@ -22,6 +24,7 @@ const routes: Routes = [
   {path: 'Login',component: LoginComponent},
   {path: 'Permiso', component: PermisoComponent},
   {path: 'Permisos',component: GetAllPermisosComponent},
+  {path: 'Historial', component: HistorialComponent},
   {path: '*', component: AppComponent}
 
 ];
