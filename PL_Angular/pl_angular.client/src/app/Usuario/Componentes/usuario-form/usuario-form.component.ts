@@ -6,19 +6,31 @@ import {Estado} from '../../../Modelos/Usuario/Estado';
 import {Municipio} from '../../../Modelos/Usuario/Municipio';
 import {Colonia} from '../../../Modelos/Usuario/Colonia';
 import {Result} from '../../../Modelos/Result';
-import { FormsModule } from '@angular/forms';
-
-
+import { FormsModule , ReactiveFormsModule} from '@angular/forms';
 import {UsuarioAPIService} from '../../Servicios/usuario-api.service';
 import {DireccionApiService} from '../../../Direccion/Servicios/direccion-api.service';
 import { ActivatedRoute } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { FlatpickrModule } from 'angularx-flatpickr';
+
+
+
+
 
 
 @Component({
   selector: 'app-usuario-form',
+
+  // => ------ STANDALONE COMPONENT ------------
+  // standalone: true,
+  // imports: [FormsModule, ReactiveFormsModule, CommonModule, RouterModule,FlatpickrModule],
+
+  // => ------ NORMAL COMPONENT(Using its own Module) ------------
   standalone: false,
   templateUrl: './usuario-form.component.html',
-  styleUrl: './usuario-form.component.css'
+  styleUrl: './usuario-form.component.css',
+  
 })
 export class UsuarioFormComponent implements OnInit {
 

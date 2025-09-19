@@ -2,13 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { ProfileAPIService } from '../../Services/profile-api.service';
 import { UserProfile } from '../../../Modelos/Empleado/UserProfile';
 import { Result } from '../../../Modelos/Result';
+import { NgModel, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-accoutns',
-  standalone: false,
+  standalone: true,
   templateUrl: './accoutns.component.html',
-  styleUrl: './accoutns.component.css'
+  styleUrl: './accoutns.component.css',
+  imports: [FormsModule, ReactiveFormsModule, CommonModule],
 })
 export class AccoutnsComponent implements OnInit {
 

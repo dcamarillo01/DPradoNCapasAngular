@@ -5,13 +5,16 @@ import { UserProfile } from '../../../Modelos/Empleado/UserProfile';
 import { Result } from '../../../Modelos/Result';
 import { Empleado } from '../../../Modelos/Empleado/Empleado';
 import { Rol } from '../../../Modelos/Usuario/Rol';
+import { NgModel } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @Component({
   selector: 'app-user-profile',
-  standalone: false,
+  standalone: true,
   templateUrl: './user-profile.component.html',
-  styleUrl: './user-profile.component.css'
+  styleUrl: './user-profile.component.css',
+  imports: [FormsModule, ReactiveFormsModule],
 })
 export class UserProfileComponent implements OnInit {
 

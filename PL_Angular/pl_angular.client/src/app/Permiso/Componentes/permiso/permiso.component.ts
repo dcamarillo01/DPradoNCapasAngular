@@ -4,6 +4,8 @@ import { PermisoApiService } from '../../Servicios/permiso-api.service';
 import { Result } from '../../../Modelos/Result';
 import { Empleado } from '../../../Modelos/Empleado/Empleado';
 import { StatusPermiso } from '../../../Modelos/Permiso/StatusPermiso';
+import Swal from 'sweetalert2';
+
 
 
 
@@ -11,7 +13,8 @@ import { StatusPermiso } from '../../../Modelos/Permiso/StatusPermiso';
   selector: 'app-permiso',
   standalone: false,
   templateUrl: './permiso.component.html',
-  styleUrl: './permiso.component.css'
+  styleUrl: './permiso.component.css',
+  
 })
 export class PermisoComponent implements OnInit {
 

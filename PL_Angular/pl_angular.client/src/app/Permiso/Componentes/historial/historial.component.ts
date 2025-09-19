@@ -4,13 +4,19 @@ import { Result } from '../../../Modelos/Result';
 import { HistorialPermiso } from '../../../Modelos/Permiso/Historial';
 import { StatusPermiso } from '../../../Modelos/Permiso/StatusPermiso';
 import { Empleado } from '../../../Modelos/Empleado/Empleado';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FlatpickrModule } from 'angularx-flatpickr';
+import Swal from 'sweetalert2';
+import { CommonModule } from '@angular/common';
+
+
 
 
 @Component({
   selector: 'app-historial',
   standalone: false,
   templateUrl: './historial.component.html',
-  styleUrl: './historial.component.css'
+  styleUrl: './historial.component.css',
 })
 export class HistorialComponent implements OnInit{
 

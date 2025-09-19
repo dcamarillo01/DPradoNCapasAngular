@@ -14,7 +14,7 @@ import Swal from 'sweetalert2';
   selector: 'app-get-all-permisos',
   standalone: false,
   templateUrl: './get-all-permisos.component.html',
-  styleUrl: './get-all-permisos.component.css'
+  styleUrl: './get-all-permisos.component.css',
 })
 export class GetAllPermisosComponent implements OnInit {
 
