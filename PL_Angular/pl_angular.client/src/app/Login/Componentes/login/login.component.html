@@ -11,41 +11,32 @@
 
             <div class="row shadow-lg p-3 mb-5 bg-body rounded">
                 <div class="col">
-                    <form >
+                    <form  #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
                         <div class="row">
                             <div class="col">
                                 <label class="form-label" >Correo</label>
-                                <input  name="email" type="text" class="form-control" [(ngModel)]="login.email" id="email" #email="ngModel" 
-                                required minlength="16" pattern="/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/"
+                                <input  name="email" type="email" class="form-control" [(ngModel)]="login.email" id="email" #email="ngModel" 
+                                required email [ngClass]="{'is-invalid': f.submitted && email.invalid}"
                                 />
-                                @if (email.invalid && (email.dirty || email.touched)) {
-            <div class="alert">
-              @if (email.hasError('required')) {
-                <div>
-                  Email is required.
-                </div>
-                
-              }
-              @if (email.hasError('minlength')) {
-                <p class="text-bg-danger">
-                  El correo debe tener minimo 16 caracteres
-                </p>
-              }
-              @if (email.hasError('pattern')) {
-                <div>
-                  Email is not valid.
-                </div>
-              }
-            </div>
-          }
+                                <div *ngIf="f.submitted && email.errors" class="invalid-feedback">
+                                    <div *ngIf="email.errors.required">Email is required</div>
+                                    <div *ngIf="email.errors.email">Email must be a valid email address</div>
+                                </div>
                             </div>
                             <div class="col">
                                 <label class="form-label" >Password</label>
-                                <input name="password" type="password" class="form-control" [(ngModel)]="login.password" />
-                                <p>{{login.password}}</p>
+                                <input name="password" type="password" class="form-control" [(ngModel)]="login.password"
+                                #password = "ngModel" required minlength="8" [ngClass]="{'is-invalid': f.submitted && password.invalid}"
+                                />
+                                <div *ngIf="f.submitted && password.errors" class="invalid-feedback">
+                                    <div *ngIf="password.errors.required">Password is required</div>
+                                    <div *ngIf="password.errors.minlength">Password must be at least 8 characters"></div>
+
+                                </div>
                             </div>
-                            <div>
-                                <button (click)="makeLogin()" class="btn btn-primary" #submit >Ingresar</button>
+                            
+                            <div class="row">
+                                <button  class="btn btn-primary" type="submit" >Ingresar</button>
                             </div>
                         </div>
                     </form>

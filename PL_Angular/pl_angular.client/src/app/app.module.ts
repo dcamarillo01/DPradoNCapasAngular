@@ -19,7 +19,7 @@ import { LoginComponent } from './Login/Componentes/login/login.component';
 // import { GetAllPermisosComponent } from './Permiso/Componentes/get-all-permisos/get-all-permisos.component';
 import Swal from 'sweetalert2';
 // import { HistorialComponent } from './Permiso/Componentes/historial/historial.component';
-
+import { NgForm } from '@angular/forms';
 
 @NgModule({
   declarations: [
