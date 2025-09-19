@@ -11,7 +11,7 @@
 
             <div class="row justify-content-end">
                 <div class="col-2 btn-group">
-                    <button class="btn btn-outline-primary" type="button" [routerLink]="['/UsuarioForm',0]"><i class="bi bi-person-plus"></i></button>
+                    <button class="btn btn-outline-primary" type="button" [routerLink]="['/Usuario/UsuarioForm',0]"><i class="bi bi-person-plus"></i></button>
                     <button class="btn btn-outline-primary" type="button" (click)="busquedaAbierta=!busquedaAbierta"><i class="bi bi-search"></i></button>
 
                 </div>
@@ -79,7 +79,7 @@
                                 <!-- <td>{{usuario.status}}</td> -->
                                 <td>
                                     <div class="form-check form-switch">
-                                        <input class="form-check-input" [(ngModel)]="usuario.status" type="checkbox" role="switch" id="flexSwitchCheckDefault"
+                                        <input class="form-check-input" [(ngModel)]="usuario.status" name="status" type="checkbox" role="switch" id="flexSwitchCheckDefault"
                                         (change)="setStatus(usuario.idUsuario,usuario.status!)">
                                     </div>
                                 </td>
@@ -88,7 +88,6 @@
 
                                 }@else{
                                     <td><img src="Imagenes/DefaultUser.png" width="50" /></td>
-
                                 }
                                 <td>{{usuario.nombre}}</td>
                                 <td>{{usuario.apellidoPaterno}}</td>
@@ -98,7 +97,7 @@
                                 <td>{{usuario.telefono}}</td>
                                 <td>{{usuario.rol?.nombre}}</td>
                                 <td>
-                                    <button class="btn btn-warning" [routerLink]="['/UsuarioForm',usuario.idUsuario]"><i class="bi bi-pencil-square"></i></button>
+                                    <button class="btn btn-warning" [routerLink]="['/Usuario/UsuarioForm',usuario.idUsuario]"><i class="bi bi-pencil-square"></i></button>
                                 </td>
                                 <td>
                                     <button class="btn btn-danger" (click)="delete(usuario.idUsuario)" ><i class="bi bi-person-dash"></i></button>

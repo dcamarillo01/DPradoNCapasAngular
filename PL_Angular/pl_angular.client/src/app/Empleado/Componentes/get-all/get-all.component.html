@@ -8,7 +8,7 @@
                     <h1>Empleados</h1>
                 </div>
                 <div class="col-2 btn-group">
-                    <button class="btn btn-outline-primary" [routerLink]="['/EmpleadoForm',0]"><i class="bi bi-person-plus"></i></button>
+                    <button class="btn btn-outline-primary" [routerLink]="['/Empleado/EmpleadoForm',0]"><i class="bi bi-person-plus"></i></button>
                     <button class="btn btn-outline-primary" type="button" (click)="busquedaAbierta=!busquedaAbierta"><i class="bi bi-search"></i></button>
                 </div>
             </div>
@@ -94,7 +94,7 @@
                                      <button class="btn btn-info" [routerLink]="['/UserProfile',empleado.idEmpleado,empleado.nombre, empleado.apellidoPaterno,empleado.departamento?.descripcion]" ><i class="bi bi-person-badge"></i></button>
                                 </td>
                                <td>
-                                    <button class="btn btn-warning" [routerLink]="['/EmpleadoForm',empleado.idEmpleado]"><i class="bi bi-pencil-square"></i></button>
+                                    <button class="btn btn-warning" [routerLink]="['Empleado/EmpleadoForm',empleado.idEmpleado]"><i class="bi bi-pencil-square"></i></button>
                                 </td> 
                                 <td>
                                     <button class="btn btn-danger" (click)="delete(empleado.idEmpleado!)" ><i class="bi bi-person-dash"></i></button>

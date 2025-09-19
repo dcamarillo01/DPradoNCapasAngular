@@ -14,10 +14,9 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-historial',
-  standalone: true,
+  standalone: false,
   templateUrl: './historial.component.html',
   styleUrl: './historial.component.css',
-  imports: [FormsModule, ReactiveFormsModule,FlatpickrModule,CommonModule],
 })
 export class HistorialComponent implements OnInit{
 

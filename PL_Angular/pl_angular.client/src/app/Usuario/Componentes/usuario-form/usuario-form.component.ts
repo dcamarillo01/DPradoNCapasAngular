@@ -21,10 +21,16 @@ import { FlatpickrModule } from 'angularx-flatpickr';
 
 @Component({
   selector: 'app-usuario-form',
-  standalone: true,
+
+  // => ------ STANDALONE COMPONENT ------------
+  // standalone: true,
+  // imports: [FormsModule, ReactiveFormsModule, CommonModule, RouterModule,FlatpickrModule],
+
+  // => ------ NORMAL COMPONENT(Using its own Module) ------------
+  standalone: false,
   templateUrl: './usuario-form.component.html',
   styleUrl: './usuario-form.component.css',
-  imports: [FormsModule, ReactiveFormsModule, CommonModule, RouterModule,FlatpickrModule],
+  
 })
 export class UsuarioFormComponent implements OnInit {
 

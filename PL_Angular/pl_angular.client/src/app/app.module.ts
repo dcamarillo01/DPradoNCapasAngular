@@ -10,7 +10,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 // import { UsuarioGetAllComponent } from './Usuario/Componentes/usuario-get-all/usuario-get-all.component';
 // import { UsuarioFormComponent } from './Usuario/Componentes/usuario-form/usuario-form.component';
 import { FlatpickrModule } from 'angularx-flatpickr';
-import { EmpleadoGetAllComponent } from './Empleado/Componentes/get-all/get-all.component';
+// import { EmpleadoGetAllComponent } from './Empleado/Componentes/get-all/get-all.component';
 // import { EmpleadoFormComponent } from './Empleado/Componentes/empleado-form/empleado-form.component';
 // import { UserProfileComponent } from './UserPofile/Componentes/user-profile/user-profile.component';
 // import { AccoutnsComponent } from './UserPofile/Componentes/accoutns/accoutns.component';
@@ -28,7 +28,7 @@ import Swal from 'sweetalert2';
     FooterComponent,
     // UsuarioGetAllComponent,
     // UsuarioFormComponent,
-    EmpleadoGetAllComponent,
+    // EmpleadoGetAllComponent,
     // EmpleadoFormComponent,
     // UserProfileComponent,
     // AccoutnsComponent,
@@ -38,7 +38,7 @@ import Swal from 'sweetalert2';
   ],
   imports: [
     BrowserModule, HttpClientModule,
-    AppRoutingModule, FormsModule, ReactiveFormsModule, FlatpickrModule.forRoot()
+    AppRoutingModule,FormsModule, ReactiveFormsModule, FlatpickrModule
   ],
   providers: [],
   bootstrap: [AppComponent]

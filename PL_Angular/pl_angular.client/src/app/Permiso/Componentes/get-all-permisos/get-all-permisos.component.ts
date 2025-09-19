@@ -6,19 +6,15 @@ import { HistorialPermiso } from '../../../Modelos/Permiso/Historial';
 import { Empleado } from '../../../Modelos/Empleado/Empleado';
 import { StatusPermiso } from '../../../Modelos/Permiso/StatusPermiso';  
 import Swal from 'sweetalert2';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FlatpickrModule } from 'angularx-flatpickr';
-import { CommonModule } from '@angular/common';
 
 
 
 
 @Component({
   selector: 'app-get-all-permisos',
-  standalone: true,
+  standalone: false,
   templateUrl: './get-all-permisos.component.html',
   styleUrl: './get-all-permisos.component.css',
-  imports: [FormsModule, ReactiveFormsModule,FlatpickrModule,CommonModule],
 })
 export class GetAllPermisosComponent implements OnInit {
 
