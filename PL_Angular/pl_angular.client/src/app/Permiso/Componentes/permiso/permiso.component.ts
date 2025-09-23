@@ -5,6 +5,7 @@ import { Result } from '../../../Modelos/Result';
 import { Empleado } from '../../../Modelos/Empleado/Empleado';
 import { StatusPermiso } from '../../../Modelos/Permiso/StatusPermiso';
 import Swal from 'sweetalert2';
+import { NgForm } from '@angular/forms';
 
 
 
@@ -74,5 +75,14 @@ export class PermisoComponent implements OnInit {
 
  }
 
+ onSubmit(f:NgForm){
+
+  if(f.invalid){
+    return;
+  }else{
+    this.solicitarPermiso();
+  }
+
+ }
 
 }

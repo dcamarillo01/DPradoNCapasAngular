@@ -94,7 +94,7 @@
                                      <button class="btn btn-info" [routerLink]="['/UserProfile',empleado.idEmpleado,empleado.nombre, empleado.apellidoPaterno,empleado.departamento?.descripcion]" ><i class="bi bi-person-badge"></i></button>
                                 </td>
                                <td>
-                                    <button class="btn btn-warning" [routerLink]="['Empleado/EmpleadoForm',empleado.idEmpleado]"><i class="bi bi-pencil-square"></i></button>
+                                    <button class="btn btn-warning" [routerLink]="['/Empleado/EmpleadoForm',empleado.idEmpleado]"><i class="bi bi-pencil-square"></i></button>
                                 </td> 
                                 <td>
                                     <button class="btn btn-danger" (click)="delete(empleado.idEmpleado!)" ><i class="bi bi-person-dash"></i></button>

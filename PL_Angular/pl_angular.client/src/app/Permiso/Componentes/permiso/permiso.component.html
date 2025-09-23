@@ -12,7 +12,7 @@
 
             <div class="row justify-content-center">
                 <div class="col-8 shadow-lg p-4 mb-5 bg-body rounded">
-                    <form>
+                    <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate >
                         <div class="row">
                             <!-- calendario -->
                             <div class="col">
@@ -27,7 +27,11 @@
                                 [mode]="'range'"
                                 [inline]="true"
                                 placeholder="Selecciona una fecha"
+                                required #fechas="ngModel" [ngClass]="{'is-invalid': f.submitted && fechas.invalid}"
                                 />
+                                <div *ngIf="f.submitted && fechas.errors" class="invalid-feedback">
+                                    <div *ngIf="fechas.errors.required">La fecha de solicitud es obligatoria</div>
+                                </div>
                             </div>
                             <!-- detalles -->
                              <div class="col ">
@@ -43,8 +47,11 @@
                                         [noCalendar]="true"
                                         [dateFormat]="'H:i'"
                                         placeholder="Selecciona una hora"
+                                        required #horaInicio="ngModel" [ngClass]="{'is-invalid': f.submitted && horaInicio.invalid}"
                                         />
-                                       
+                                       <div *ngIf="f.submitted && horaInicio.errors" class="invalid-feedback">
+                                        <div *ngIf="horaInicio.errors.required">La Hora es obligatoria</div>
+                                       </div>
 
                                 </div>
                                 <div class="row pb-2">
@@ -59,18 +66,27 @@
                                         [noCalendar]="true"
                                         [dateFormat]="'H:i'"
                                         placeholder="Selecciona una hora"
+                                        required #horaFin="ngModel" [ngClass]="{'is-invalid': f.submitted && horaFin.invalid}"
                                         />
+                                        <div *ngIf="f.submitted && horaFin.errors" class="invalid-feedback">
+                                            <div *ngIf="horaFin.errors.required">La hora es obligatoria</div>
+                                        </div>
                                 </div>
                                 <div class="row pb-2">
                                     <label class="form-label" >Motivo</label>
                                     <textarea class="form-control" name="motivo"
                                     [(ngModel)]="permiso.motivo"
-                                    type="textarea"></textarea>
+                                    type="textarea"
+                                    required #motivo="ngModel" [ngClass]="{'is-invalid': f.submitted && motivo.invalid}"
+                                    ></textarea>
+                                    <div *ngIf="f.submitted && motivo.errors" class="invalid-feedback">
+                                        <div *ngIf="motivo.errors.required">El motivo es obligatorio</div>
+                                    </div>
                                 </div>
                              </div>
                              <div class="row justify-content-end">
                                 <div class="col-2">
-                                    <button class="btn btn-success" (click)="solicitarPermiso()">Solicitar</button>
+                                    <button class="btn btn-success">Solicitar</button>
                                 </div>
                              </div>
                         </div>

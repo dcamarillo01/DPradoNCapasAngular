@@ -14,23 +14,44 @@
 </div>
             <div class="row shadow-lg p-3 mb-5 bg-body rounded">
                 <div class="col">
-                    <form>
+                    <form  #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
                         <div class="row"  style="padding-top: 10px;">
                             <div class="col">
                                  <label class="form-label">Nombre</label>
-                                 <input name="nombre" type="text" class="form-control" placeholder="Nombre" [(ngModel)]="empleado.nombre"/>
+                                 <input name="nombre" type="text" class="form-control" placeholder="Nombre" [(ngModel)]="empleado.nombre"
+                                 required #nombre="ngModel" pattern="^[a-zA-Z]+$" [ngClass]="{'is-invalid': f.submitted && nombre.invalid}"
+                                 />
+                                 <div *ngIf="f.submitted && nombre.errors" class="invalid-feedback">
+                                    <div *ngIf="nombre.errors.required">El nombre es obligatorio</div>
+                                    <div *ngIf="nombre.errors.pattern">Solo se aceptan letras</div>
+                                 </div>
                             </div>
                             <div class="col">
                                  <label class="form-label">Apellido Paterno</label>
-                                 <input name="apellidoPaterno" type="text" class="form-control" placeholder="Nombre" [(ngModel)]="empleado.apellidoPaterno"/>
+                                 <input name="apellidoPaterno" type="text" class="form-control" placeholder="Nombre" [(ngModel)]="empleado.apellidoPaterno"
+                                 required #apellidoPaterno="ngModel" pattern="^[a-zA-Z]+$" [ngClass]="{'is-invalid': f.submitted && apellidoPaterno.invalid}"
+                                 />
+                                 <div *ngIf="f.submitted && apellidoPaterno.errors" class="invalid-feedback">
+                                    <div *ngIf="f.submitted && apellidoPaterno.errors">
+                                        <div *ngIf="apellidoPaterno.errors.required">El apelliodo paterno es obligatorio</div>
+                                        <div *ngIf="apellidoPaterno.errors.pattern">Solo se aceptan letras</div>
+                                    </div>
+                                 </div>
                             </div>
                             <div class="col">
                                  <label class="form-label">Apellido Materno</label>
-                                 <input name="apellidoMaterno" type="text" class="form-control" placeholder="Nombre" [(ngModel)]="empleado.apellidoMaterno"/>
+                                 <input name="apellidoMaterno" type="text" class="form-control" placeholder="Nombre" [(ngModel)]="empleado.apellidoMaterno"
+                                 pattern="^[a-zA-Z]+$" #apellidoMaterno="ngModel" [ngClass]="{'is-invalid': f.submitted && apellidoMaterno.invalid}" 
+                                 />
+                                 <div *ngIf="f.submitted && apellidoMaterno.errors" class="invalid-feedback">
+                                    <div *ngIf="apellidoMaterno.errors.pattern">Solo se aceptan letras</div>
+                                 </div>
                             </div>
                              <div class="col">
                                 <label class="form-label">Departamento</label>
-                            <select name="rol" class="form-select" [(ngModel)]="selectedDepartamento">
+                            <select name="rol" class="form-select" [(ngModel)]="selectedDepartamento" 
+                            required #departamento="ngModel" [ngClass]="{'is-invalid': f.submitted && departamento.invalid}"
+                            >
                              <option  [value]="0"><-Selecciona un Departamento</option>
                              <option  [value]="1">Sistemas</option>
                              <option  [value]="2">Recursos Humanos</option>
@@ -38,6 +59,9 @@
                              <option  [value]="4">Animacion</option>
                              <option  [value]="5">Mecatronica</option>
                              </select>
+                             <div *ngIf="f.submitted && departamento.errors" class="invalid-feedback">
+                                <div *ngIf="departamento.errors.required">El departamento es obligatorio</div>
+                             </div>
                             </div>
                         </div>
                         <div class="row"  style="padding-top: 10px;">
@@ -51,7 +75,11 @@
                                 [altFormat]="'d-m-Y'"
                                 [dateFormat]="'d-m-Y'"
                                 placeholder="Selecciona una fecha"
+                                required #fechaNacimiento="ngModel" [ngClass]="{'is-invalid': f.submitted && fechaNacimiento.invalid}"
                                 />
+                                <div *ngIf="f.submitted && fechaNacimiento.errors" class="invalid-feedback">
+                                    <div *ngIf="fechaNacimiento.errors.required">La fecha es obligatoria</div>
+                                </div>
                             </div>
                             <div class="col">
                                 <label class="form-label">Fecha de Ingreso</label>
@@ -63,36 +91,68 @@
                                 [altFormat]="'d-m-Y'"
                                 [dateFormat]="'d-m-Y'"
                                 placeholder="Selecciona una fecha"
+                                required #fechaIngreso="ngModel" [ngClass]="{'is-invalid': f.submitted && fechaIngreso.invalid}"
                                 />
+                                <div *ngIf="f.submitted && fechaIngreso.errors" class="invalid-feedback">
+                                    <div *ngIf="fechaIngreso.errors.required">La fecha es obligatoria</div>
+                                </div>
                             </div>
                             @if(empleado.idEmpleado!>0){
                                 <div class="col">
                                     <label class="form-label">Numero de Faltas</label>
-                                    <input  name="noFaltas" type="number" class="form-control" placeholder="#Faltas" [(ngModel)]="empleado.noFaltas" />
+                                    <input  name="noFaltas" type="number" class="form-control" placeholder="#Faltas" [(ngModel)]="empleado.noFaltas" 
+                                    pattern="^[0-9]+$" #nFaltas="ngModel" [ngClass]="{'is-invalid': f.submitted && nFaltas.invalid}"
+                                    />
+                                    <div *ngIf="f.submitted && nFaltas.errors" class="invalid-feedback">
+                                        <div *ngIf="nFaltas.errors.pattern">Solo se aceptan numeros</div>
+                                    </div>
                                 </div>
                             }
                         </div>
                         <div class="row" style="padding-top: 10px;">
                             <div class="col">
                                 <label class="form-label">CURP</label>
-                                <input name="curp" type="text" class="form-control" placeholder="CURP" [(ngModel)]="empleado.curp"/>
+                                <input name="curp" type="text" class="form-control" placeholder="CURP" [(ngModel)]="empleado.curp"
+                                required pattern="^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$"
+                                #curp="ngModel" [ngClass]="{'is-invalid': f.submitted && curp.invalid}"
+                                />
+                                <div *ngIf="f.submitted && curp.errors" class="invalid-feedback">
+                                    <div *ngIf="curp.errors.required">CURP es obligatorio</div>
+                                    <div *ngIf="curp.errors.pattern">Curp invalido</div>
+                                </div>
                             </div>
                             <div class="col">
                                 <label class="form-label">RFC</label>
-                                <input name="rfc" type="text" class="form-control" placeholder="RFC" [(ngModel)]="empleado.rfc" />
+                                <input name="rfc" type="text" class="form-control" placeholder="RFC" [(ngModel)]="empleado.rfc"
+                                required #rfc="ngModel" [ngClass]="{'is-invalid': f.submitted && rfc.invalid}"
+                                />
+                                <div *ngIf="f.submitted && rfc.errors" class="invalid-feedback">
+                                    <div *ngIf="rfc.errors.required">RFC es obligatorio</div>
+                                </div>
                             </div>
                             <div class="col">
                                 <label class="form-label">NSS</label>
-                                <input name="nss" type="text" class="form-control" placeholder="RFC" [(ngModel)]="empleado.nss" />
+                                <input name="nss" type="text" class="form-control" placeholder="RFC" [(ngModel)]="empleado.nss" 
+                                required #nss="ngModel" [ngClass]="{'is-invalid': f.submitted && nss.invalid}"
+                                />
+                                <div *ngIf="f.submitted && nss.errors" class="invalid-feedback">
+                                    <div *ngIf="nss.errors.required">NSS es obligatorio</div>
+                                </div>
                             </div>
                             <div class="col">
                                 <label class="form-label">Salario Base</label>
-                                <input name="salarioBase" type="number" class="form-control" placeholder="Salario Base" [(ngModel)]="empleado.salarioBase"/>
+                                <input name="salarioBase" type="number" class="form-control" placeholder="Salario Base" [(ngModel)]="empleado.salarioBase"
+                                required #salario="ngModel" pattern="^[0-9]+$" [ngClass]="{'is-invalid': f.submitted && salario.invalid}"
+                                />
+                                <div *ngIf="f.submitted && salario.errors" class="invalid-feedback">
+                                    <div *ngIf="salario.errors.required">El salario es obligatorio</div>
+                                    <div *ngIf="salario.errors.pattern">Solo se aceptan numeros</div>
+                                </div>
                             </div>
                         </div>
                          <div class="d-flex justify-content-end gap-2 mt-4">
                         <a class="btn btn-outline-secondary" routerLink="/Empleado/EmpleadoGetAll">Cancelar</a>
-                        <button type="submit" class="btn btn-primary" (click)="registrarEmpleado(empleado)">Guardar</button>
+                        <button type="submit" class="btn btn-primary" >Guardar</button>
                         </div>
                     </form>
                 </div>
