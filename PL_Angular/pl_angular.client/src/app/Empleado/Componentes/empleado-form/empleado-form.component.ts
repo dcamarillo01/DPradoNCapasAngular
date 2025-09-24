@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NgModel } from '@angular/forms';
 import { FlatpickrModule} from 'angularx-flatpickr';
+import { NgForm } from '@angular/forms';
 
 
 
@@ -53,6 +54,18 @@ export class EmpleadoFormComponent implements OnInit {
 
       }
     )
+  }
+
+
+  onSubmit(f: NgForm){
+
+    if(f.invalid){
+      return;
+    }else{
+
+      this.registrarEmpleado(this.empleado);
+    }
+
   }
 
   // =========================  APIS ============================== 

@@ -6,14 +6,12 @@ import {Estado} from '../../../Modelos/Usuario/Estado';
 import {Municipio} from '../../../Modelos/Usuario/Municipio';
 import {Colonia} from '../../../Modelos/Usuario/Colonia';
 import {Result} from '../../../Modelos/Result';
-import { FormsModule , ReactiveFormsModule} from '@angular/forms';
 import {UsuarioAPIService} from '../../Servicios/usuario-api.service';
 import {DireccionApiService} from '../../../Direccion/Servicios/direccion-api.service';
 import { ActivatedRoute } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { FlatpickrModule } from 'angularx-flatpickr';
-
+import { NgForm } from '@angular/forms';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 
 
@@ -37,13 +35,6 @@ export class UsuarioFormComponent implements OnInit {
 
   usuario :Usuario =  new Usuario();
 
-  // usuario: Usuario = {} as Usuario;
-  // direccion : Direccion = new Direccion();
-  // rol: Rol = new Rol();
-  // estado: Estado = new Estado();
-  // municipio: Municipio = new Municipio();
-  // colonia: Colonia = new Colonia();
-
   selectedRol!: number;
 
   roles: Rol[] = [];
@@ -56,9 +47,10 @@ export class UsuarioFormComponent implements OnInit {
 
   imgPreview !: string;
 base64textString!: string;
+fieldTextType!: boolean;
 
 
-  constructor(private apiService: UsuarioAPIService, private route: ActivatedRoute, private direccionApiService: DireccionApiService){}
+  constructor(private apiService: UsuarioAPIService, private route: ActivatedRoute, private direccionApiService: DireccionApiService, private router: Router){}
 
 
 ngOnInit(): void {
@@ -163,6 +155,16 @@ inputIMG(event: any) {
  
 }
 
+  onSubmit(f: NgForm){
+
+    if(f.invalid){
+      return;
+    }else{
+
+      this.registrarUsuario(this.usuario);
+    }
+
+  }
 
   registrarUsuario(usuario: Usuario){
 
@@ -188,7 +190,11 @@ inputIMG(event: any) {
         console.log(data)
         if(data.correct){
           console.log("correcto")
-          alert("Se actualizo Usuario")
+          this.router.navigate(['/Usuario/UsuarioGetAll']);
+          Swal.fire({
+          title: "Actualizacion Exitoso",
+          icon: "success"
+        });
         }
 
 
@@ -200,15 +206,21 @@ inputIMG(event: any) {
 
       console.log(data);
       if(data.correct){
-        console.log("correcto")
+        this.router.navigate(['/Usuario/UsuarioGetAll']);
+          Swal.fire({
+          title: "Registro Exitoso",
+          icon: "success"
+        });
       }
 
     })
     }
 
-    
   }
 
-  
+    // <!-- Switching method -->
+  toggleFieldTextType() {
+    this.fieldTextType = !this.fieldTextType;
+  }
 
 }

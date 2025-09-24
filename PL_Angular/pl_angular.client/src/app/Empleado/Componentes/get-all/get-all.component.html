@@ -57,11 +57,12 @@
 
             <div class="row">
                 <div class="col table-responsive" >
+                        @defer(when Empleados.length > 0){
                     
                     <table class="table table-sm  table-dark">
                         <thead class="thead-dark">
                             <tr>
-                                <th>Id</th>
+                                <!-- <th>Id</th> -->
                                 <th>Nombre</th>
                                 <th>Apellidos</th>
                                 <th>Nacimiento</th>
@@ -79,7 +80,7 @@
                         </thead>
                         <tbody *ngFor="let empleado of Empleados">
                             <tr>
-                                <td>{{empleado.idEmpleado}}</td>
+                                <!-- <td>{{empleado.idEmpleado}}</td> -->
                                 <td>{{empleado.nombre}}</td>
                                 <td>{{empleado.apellidoPaterno}} {{empleado.apellidoMaterno}}</td>
                                 <td>{{empleado.fechaNacimiento}}</td>
@@ -94,14 +95,22 @@
                                      <button class="btn btn-info" [routerLink]="['/UserProfile',empleado.idEmpleado,empleado.nombre, empleado.apellidoPaterno,empleado.departamento?.descripcion]" ><i class="bi bi-person-badge"></i></button>
                                 </td>
                                <td>
-                                    <button class="btn btn-warning" [routerLink]="['Empleado/EmpleadoForm',empleado.idEmpleado]"><i class="bi bi-pencil-square"></i></button>
+                                    <button class="btn btn-warning" [routerLink]="['/Empleado/EmpleadoForm',empleado.idEmpleado]"><i class="bi bi-pencil-square"></i></button>
                                 </td> 
                                 <td>
                                     <button class="btn btn-danger" (click)="delete(empleado.idEmpleado!)" ><i class="bi bi-person-dash"></i></button>
                                 </td> 
                             </tr>
                         </tbody>
+                    
                     </table>
+                    }@placeholder {
+                        <div class="row text-center">
+                            <div class="col text-center">
+                                <h3>Cargando...</h3>
+                            </div>
+                        </div>
+                    }
                 </div>
             </div>
         </div>

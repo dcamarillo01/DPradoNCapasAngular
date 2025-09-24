@@ -4,12 +4,6 @@ import { Result } from '../../../Modelos/Result';
 import { HistorialPermiso } from '../../../Modelos/Permiso/Historial';
 import { StatusPermiso } from '../../../Modelos/Permiso/StatusPermiso';
 import { Empleado } from '../../../Modelos/Empleado/Empleado';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FlatpickrModule } from 'angularx-flatpickr';
-import Swal from 'sweetalert2';
-import { CommonModule } from '@angular/common';
-
-
 
 
 @Component({
@@ -35,6 +29,7 @@ export class HistorialComponent implements OnInit{
     
   }
 
+  // PETICION GET HISTORIAL 
   getHistorial(){
 
     this.historial.statusPermiso = new StatusPermiso();
@@ -62,6 +57,7 @@ export class HistorialComponent implements OnInit{
 
   }
 
+  //Obtener nombre para busqueda abierta. 
   getNombre(event: Event){
 
     this.nombreAuthorizador = (event.target as HTMLInputElement).value;

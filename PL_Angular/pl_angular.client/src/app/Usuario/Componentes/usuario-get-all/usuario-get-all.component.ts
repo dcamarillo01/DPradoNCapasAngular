@@ -2,10 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsuarioAPIService} from '../../Servicios/usuario-api.service';
 import { Result} from '../../../Modelos/Result';
 import { Usuario} from '../../../Modelos/Usuario/Usuario';
-// import { FormsModule, NgModel } from '@angular/forms';
-// import { RouterModule } from '@angular/router';
-// import { CommonModule } from '@angular/common';
-
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-usuario-get-all',
@@ -83,12 +80,34 @@ export class UsuarioGetAllComponent implements OnInit {
   }
 
   delete(idUsuario: number){
+
+    Swal.fire({
+  title: "Deseas eliminar usuario?",
+  showDenyButton: true,
+  showCancelButton: true,
+  confirmButtonText: "Confirmar",
+  denyButtonText: `Cancelar`
+}).then((result) => {
+  if (result.isConfirmed) {
     this.usuarioApi.delete(idUsuario).subscribe((data: Result) =>{
 
-      console.log(data);
-
-
+      if(data.correct){
+        this.getAllUsuarios();
+        Swal.fire({
+                  title: "Delete Exitoso",
+                  icon: "success"
+                });
+      }
     })
+
+  } else if (result.isDenied) {
+
+    Swal.fire("No se elimino el usuario");
+  }
+});
+
+
+    
   }
 
   setStatus(idUsuario : number, Status:boolean){

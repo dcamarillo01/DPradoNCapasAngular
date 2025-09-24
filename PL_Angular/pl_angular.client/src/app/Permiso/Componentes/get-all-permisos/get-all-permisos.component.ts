@@ -8,8 +8,6 @@ import { StatusPermiso } from '../../../Modelos/Permiso/StatusPermiso';
 import Swal from 'sweetalert2';
 
 
-
-
 @Component({
   selector: 'app-get-all-permisos',
   standalone: false,
@@ -19,7 +17,6 @@ import Swal from 'sweetalert2';
 export class GetAllPermisosComponent implements OnInit {
 
   permisos : Permiso[] = [];
-  // permiso: Permiso = new Permiso();
   historial : HistorialPermiso = new HistorialPermiso();
   empleado: Empleado = new Empleado();
 
@@ -33,6 +30,7 @@ export class GetAllPermisosComponent implements OnInit {
     
   }
 
+  //PETICION GET OBTENER PERMISOS.
   getPermisos(){
 
     this.apiService.getPermisos().subscribe((data:Result)=>{
@@ -41,14 +39,8 @@ export class GetAllPermisosComponent implements OnInit {
     });
   }
 
+  //PETICION POST A PERMISO.
   aprovarRechazar(idPermiso:number, idStatusPermiso: number, observaciones: string){
-
-    //  idHistorialPermiso!: number;
-    //     permiso!: Permiso;
-    //     fechaRevision! : string;
-    //     statusPermiso!: StatusPermiso;
-    //     observaciones!:string;
-    //     aprovoRechazo!: Empleado;
 
     this.historial.permiso = new Permiso();
     this.historial.permiso.idPermiso = idPermiso;
@@ -65,15 +57,23 @@ export class GetAllPermisosComponent implements OnInit {
     this.apiService.aprovarRechazar(this.historial).subscribe((data:Result)=>{
 
         if(data.correct){
+          if(idStatusPermiso==2){
             Swal.fire({
-              title: "The Internet?",
-              text: "That thing is still around?",
+              title: "Aprovado",
               icon: "success"
             });
+          }else if(idStatusPermiso==3){
+            Swal.fire({
+              title: "Rechazado",
+              icon: "error"
+            });
+          }
+
+          this.getPermisos();
+            
         }else{
           Swal.fire({
-              title: "The Internet?",
-              text: "That thing is still around?",
+              title: "Ocurrio un error al Aprovar/Rechazar",
               icon: "error"
             });
         }
@@ -84,6 +84,7 @@ export class GetAllPermisosComponent implements OnInit {
   }
 
 
+  //OBTENER OBSERVACIONES DE PETICION/PERMISO CON SweetAlert
   observaciones(idPermiso:number, idStatusPermiso:number){
 
     Swal.fire({
@@ -101,8 +102,5 @@ export class GetAllPermisosComponent implements OnInit {
     });
 
 }
-
-  
-  
 
 }

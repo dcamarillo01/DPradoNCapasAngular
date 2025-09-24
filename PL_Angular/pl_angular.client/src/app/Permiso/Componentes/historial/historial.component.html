@@ -9,11 +9,12 @@
                     <h1>Historial de Permisos</h1>
                 </div>
                 <div class="col-1 btn-group">
-                     <button class="btn btn-outline-primary" type="button" (click)="busquedaAbierta=!busquedaAbierta"><i class="bi bi-search"></i></button>
+                     <button class="btn btn-outline-primary" #busqueda type="button" (click)="busquedaAbierta=!busquedaAbierta"><i class="bi bi-search"></i></button>
                 </div>
             </div>
 
             <!-- BUSQUEDA ABIERTA  -->
+            @defer(on interaction(busqueda)){
             <div class="row shadow-lg mb-5 pt-2 pb-2 bg-body rounded" [hidden]="!busquedaAbierta" style="padding-bottom: 20px;">
                 <div class="col">
                     <form>
@@ -32,15 +33,16 @@
                     </form>
                 </div>
             </div>
-
+            }
 
             <!-- TABLA HISTORIAL  -->
             <div class="row">
                 <div class="col">
+                    @defer(when permisos.length > 0){
                     <table class="table table-sm">
                         <thead class="table-dark">
                             <tr>
-                                <th>Id</th>
+                                <!-- <th>Id</th> -->
                                 <th>FechaRevision</th>
                                 <th>Status</th>
                                 <th>Observaciones</th>
@@ -49,14 +51,26 @@
                         </thead>
                         <tbody *ngFor="let permiso of permisos">
                             <tr>
-                                <td>{{permiso.idHistorialPermiso}}</td>
+                                <!-- <td>{{permiso.idHistorialPermiso}}</td> -->
                                 <td>{{permiso.fechaRevision}}</td>
-                                <td>{{permiso.statusPermiso.descripcion}}</td>
+                                @if(permiso.statusPermiso.descripcion == "Aprovado"){
+                                    <td class="text-success"><i class="bi bi-check-circle h3"></i></td>
+
+                                }@else{
+                                    <td class="text-danger"> <i class="bi bi-x-octagon h3"></i></td>
+                                }
                                 <td>{{permiso.observaciones}}</td>
                                 <td>{{permiso.aprovoRechazo.nombre}}</td>
                             </tr>
                         </tbody>
                     </table>
+                }@placeholder {
+                    <div class="row text-center">
+                        <div class="col text-center">
+                            <h3>Cargando ...</h3>
+                        </div>
+                    </div>
+                }
                 </div>
             </div>
         </div>
