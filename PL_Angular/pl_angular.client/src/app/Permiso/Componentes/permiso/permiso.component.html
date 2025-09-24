@@ -39,7 +39,7 @@
                                         <label class="form-label" >HoraInicio</label>
                                         <input class="form-control" name="horaInicio"
                                         [(ngModel)]="permiso.horaInicio"
-                                        type="text" (click)="obtenerFechas()" 
+                                        type="text" 
                                         mwlFlatpickr
                                         [altInput]="true"
                                         [altFormat]="'H:i'"
@@ -86,7 +86,7 @@
                              </div>
                              <div class="row justify-content-end">
                                 <div class="col-2">
-                                    <button class="btn btn-success">Solicitar</button>
+                                    <button class="btn btn-success" (click)="obtenerFechas()" >Solicitar</button>
                                 </div>
                              </div>
                         </div>

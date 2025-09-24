@@ -21,66 +21,61 @@ export class PermisoComponent implements OnInit {
 
 
   permiso : Permiso = new Permiso();
-  
   fechasSolicitadas!: string;
-  // fechaInicio = this.permiso.fechaInicio[0];
-  // fechaFin = this.permiso.fechaInicio[1];
   
-
-
   constructor(private apiService: PermisoApiService){}
-
-
 
   ngOnInit(): void {
     
   }
 
-
+  //OBTENER RANGO DE FECHAS
  obtenerFechas(){
 
- 
-
-  console.log(this.fechasSolicitadas);
   const fechas = this.fechasSolicitadas.split(" to ");
   this.permiso.fechaInicio = fechas[0];
   this.permiso.fechaFin = fechas[1];
 
-  console.log(this.permiso.fechaInicio);
-  console.log(this.permiso.fechaFin);
-
  }
 
 
+ // PETICION POST A PERMISO API
  solicitarPermiso(){
 
-
-   this.permiso.empleado = new Empleado();
+  this.permiso.empleado = new Empleado();
   this.permiso.empleadoAutorizador = new Empleado();
   this.permiso.statusPermiso = new StatusPermiso();
   this.permiso.empleado.idEmpleado = 1;
   this.permiso.empleadoAutorizador.idEmpleado = 1;
   this.permiso.statusPermiso.idStatusPermiso = 1;
 
-
   this.apiService.addPermiso(this.permiso).subscribe((data: Result) => {
-    console.log(data);
+
     if(data.correct){
-      alert("Se registro el permiso")
+      Swal.fire({
+        text: "Se registro el permiso",
+        icon: "success"
+      });
     }else{
-      alert("No se registro el permiso")
+      Swal.fire({
+        text: "No se registro el permiso",
+        icon: "error"
+      });
     }
 
   });
 
  }
 
+ // FORMULARIO SUBMIT
  onSubmit(f:NgForm){
 
   if(f.invalid){
     return;
   }else{
     this.solicitarPermiso();
+    f.resetForm();
+    f.reset();
   }
 
  }

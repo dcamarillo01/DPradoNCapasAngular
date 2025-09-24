@@ -10,6 +10,8 @@ import {UsuarioAPIService} from '../../Servicios/usuario-api.service';
 import {DireccionApiService} from '../../../Direccion/Servicios/direccion-api.service';
 import { ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 
 
@@ -45,9 +47,10 @@ export class UsuarioFormComponent implements OnInit {
 
   imgPreview !: string;
 base64textString!: string;
+fieldTextType!: boolean;
 
 
-  constructor(private apiService: UsuarioAPIService, private route: ActivatedRoute, private direccionApiService: DireccionApiService){}
+  constructor(private apiService: UsuarioAPIService, private route: ActivatedRoute, private direccionApiService: DireccionApiService, private router: Router){}
 
 
 ngOnInit(): void {
@@ -187,7 +190,11 @@ inputIMG(event: any) {
         console.log(data)
         if(data.correct){
           console.log("correcto")
-          alert("Se actualizo Usuario")
+          this.router.navigate(['/Usuario/UsuarioGetAll']);
+          Swal.fire({
+          title: "Actualizacion Exitoso",
+          icon: "success"
+        });
         }
 
 
@@ -199,15 +206,21 @@ inputIMG(event: any) {
 
       console.log(data);
       if(data.correct){
-        console.log("correcto")
+        this.router.navigate(['/Usuario/UsuarioGetAll']);
+          Swal.fire({
+          title: "Registro Exitoso",
+          icon: "success"
+        });
       }
 
     })
     }
 
-    
   }
 
-  
+    // <!-- Switching method -->
+  toggleFieldTextType() {
+    this.fieldTextType = !this.fieldTextType;
+  }
 
 }

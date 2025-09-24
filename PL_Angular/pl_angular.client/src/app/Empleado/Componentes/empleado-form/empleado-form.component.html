@@ -52,7 +52,6 @@
                             <select name="rol" class="form-select" [(ngModel)]="selectedDepartamento" 
                             required #departamento="ngModel" [ngClass]="{'is-invalid': f.submitted && departamento.invalid}"
                             >
-                             <option  [value]="0"><-Selecciona un Departamento</option>
                              <option  [value]="1">Sistemas</option>
                              <option  [value]="2">Recursos Humanos</option>
                              <option  [value]="3">Administracion</option>
@@ -100,11 +99,11 @@
                             @if(empleado.idEmpleado!>0){
                                 <div class="col">
                                     <label class="form-label">Numero de Faltas</label>
-                                    <input  name="noFaltas" type="number" class="form-control" placeholder="#Faltas" [(ngModel)]="empleado.noFaltas" 
-                                    pattern="^[0-9]+$" #nFaltas="ngModel" [ngClass]="{'is-invalid': f.submitted && nFaltas.invalid}"
+                                    <input  name="noFaltas"  class="form-control" placeholder="#Faltas"  [(ngModel)]="empleado.noFaltas" 
+                                    pattern="^[0-9]+$" #noFaltas="ngModel" [ngClass]="{'is-invalid': f.submitted && noFaltas.invalid}"
                                     />
-                                    <div *ngIf="f.submitted && nFaltas.errors" class="invalid-feedback">
-                                        <div *ngIf="nFaltas.errors.pattern">Solo se aceptan numeros</div>
+                                    <div *ngIf="f.submitted && noFaltas.errors" class="invalid-feedback">
+                                        <div *ngIf="noFaltas.errors.pattern">Solo se aceptan numeros</div>
                                     </div>
                                 </div>
                             }
@@ -141,7 +140,7 @@
                             </div>
                             <div class="col">
                                 <label class="form-label">Salario Base</label>
-                                <input name="salarioBase" type="number" class="form-control" placeholder="Salario Base" [(ngModel)]="empleado.salarioBase"
+                                <input name="salarioBase" class="form-control" placeholder="Salario Base" [(ngModel)]="empleado.salarioBase"
                                 required #salario="ngModel" pattern="^[0-9]+$" [ngClass]="{'is-invalid': f.submitted && salario.invalid}"
                                 />
                                 <div *ngIf="f.submitted && salario.errors" class="invalid-feedback">

@@ -3,7 +3,11 @@
 
 <div class="row">
     <div class="col-6 justify-content-end">
-        <h1>Agregar Usuario</h1>
+        @if(usuario.idUsuario > 0){
+            <h1>Editar Usuario</h1>
+        }@else{
+            <h1>Registar Usuario</h1>
+        }
     </div>
 </div>
 <div class="row justify-content-end" style="padding-bottom: 20px;">
@@ -65,7 +69,7 @@
                                 />
                                 <div *ngIf="f.submitted && materno.errors" class="invalid-feedback">
                                     <div *ngIf="materno.errors.required">El apllido es requerido</div>
-                                    <div *ngIF="materno.errors.pattern">El apellido solo puede contener letras</div>
+                                    <div *ngIf="materno.errors.pattern">El apellido solo puede contener letras</div>
                                 </div>
                             </div>
                             
@@ -132,7 +136,7 @@
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="bi bi-at"></i></span>
                                 <input  name="email"type="string" [(ngModel)]="usuario.email" placeholder="email@gmail.com" class="form-control"
-                                    required #email="ngModel" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" [ngClass]="{'is-invalid': f.submitted && email.invalid}"
+                                    required #email="ngModel" pattern="^([a-zA-Z0-9_\.\-\+])+@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$" [ngClass]="{'is-invalid': f.submitted && email.invalid}"
                                 />
                                 <div *ngIf="f.submitted && email.errors" class="invalid-feedback">
                                     <div *ngIf="email.errors.required">El email es requerido</div>
@@ -173,14 +177,14 @@
                                     pattern="^[0-9]+$" #celular="ngModel" [ngClass]="{'is-invalid': f.submitted && celular.invalid}"
                                     />
                                     <div *ngIf="f.submitted && celular.errors" class="invalid-feedback">
-                                        <div *ngIf="celular.errors.patter">Solo se aceptan numeros</div>
+                                        <div *ngIf="celular.errors.pattern">Solo se aceptan numeros</div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col">
                                 <label class="form-label">CURP</label>
                                 <input name="CURP" type="string" [(ngModel)]="usuario.curp" placeholder="CURP" class="form-control"
-                                required #curp="ngModel" pattern="^([a-zA-Z0-9_\.\-\+])+\@@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$" 
+                                required #curp="ngModel" pattern="^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$" 
                                 [ngClass]="{'is-invalid': f.submitted && curp.invalid}"
                                 />
                                 <div *ngIf="f.submitted && curp.errors" class="invalid-feedback">

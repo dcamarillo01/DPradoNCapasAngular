@@ -12,10 +12,11 @@
 
             <div class="row">
                 <div class="col">
+                    @defer(when permisos.length > 0){
                     <table class="table table-sm">
                         <thead class="table-dark">
                             <tr>
-                                <th>Id</th>
+                                <!-- <th>Id</th> -->
                                 <th>FechaInicio</th>
                                 <th>FechaFin</th>
                                 <th>HoraInicio</th>
@@ -28,7 +29,7 @@
                         </thead>
                         <tbody *ngFor="let permiso of permisos">
                                 <tr>
-                                    <td>{{permiso.idPermiso}}</td>
+                                    <!-- <td>{{permiso.idPermiso}}</td> -->
                                     <td>{{permiso.fechaInicio}}</td>
                                     <td>{{permiso.fechaFin}}</td>
                                     <td>{{permiso.horaInicio}}</td>
@@ -48,6 +49,13 @@
                                 </tr>
                         </tbody>
                     </table>
+                }@placeholder {
+                    <div class="row text-center">
+                        <div class="col text-center">
+                            <h3>Cargando...</h3>
+                        </div>
+                    </div>
+                }
                 </div>
             </div>
         </div>
