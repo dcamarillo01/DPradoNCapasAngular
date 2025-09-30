@@ -12,7 +12,7 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/Login">Login</a>
         </li>
-        <div *ngIf="token != null">
+        <div *ngIf="isLoggedIn()">
           <!-- @if(token != null){ -->
 
           <ul class="navbar-nav">
@@ -50,6 +50,7 @@
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
+        <button (click)="logout()" class="btn btn-danger"> LogOut </button>
       </ul>
     </div>
   </div>

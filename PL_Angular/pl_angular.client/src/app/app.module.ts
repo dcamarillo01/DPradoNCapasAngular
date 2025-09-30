@@ -20,6 +20,7 @@ import { LoginComponent } from './Login/Componentes/login/login.component';
 import Swal from 'sweetalert2';
 // import { HistorialComponent } from './Permiso/Componentes/historial/historial.component';
 import { NgForm } from '@angular/forms';
+import { InicioComponent } from './Inicio/inicio/inicio.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { NgForm } from '@angular/forms';
     // UserProfileComponent,
     // AccoutnsComponent,
     LoginComponent,
+    InicioComponent,
     // GetAllPermisosComponent,
     // HistorialComponent,
   ],

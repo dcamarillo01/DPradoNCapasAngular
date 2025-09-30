@@ -11,6 +11,7 @@ import {LoginComponent} from './Login/Componentes/login/login.component';
 // import { GetAllPermisosComponent } from './Permiso/Componentes/get-all-permisos/get-all-permisos.component';
 // import { HistorialComponent } from './Permiso/Componentes/historial/historial.component';
 import { AppComponent } from './app.component';
+import { InicioComponent } from './Inicio/inicio/inicio.component';
 
 
 const routes: Routes = [
@@ -51,8 +52,8 @@ const routes: Routes = [
   {path: 'Usuario', loadChildren: () => import('./Usuario/usuario.module').then(m => m.UsuarioModule)},
   {path: 'Permiso', loadChildren: () => import('./Permiso/permiso.module').then(m => m.PermisoModule)},
   {path: 'Empleado', loadChildren: () => import('./Empleado/empleado.module').then(m => m.EmpleadoModule)},
-
-  {path: '*', component: AppComponent}
+  {path: 'Inicio', component: InicioComponent},
+  {path: '', component: LoginComponent}
 
 ];
 
