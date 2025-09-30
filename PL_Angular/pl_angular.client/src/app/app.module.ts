@@ -1,8 +1,8 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule , ReactiveFormsModule } from '@angular/forms';
-
+import {AuthInterceptor} from './Interceptores/interceptor.interceptor';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/header/header.component';
@@ -20,6 +20,7 @@ import { LoginComponent } from './Login/Componentes/login/login.component';
 import Swal from 'sweetalert2';
 // import { HistorialComponent } from './Permiso/Componentes/historial/historial.component';
 import { NgForm } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -40,7 +41,13 @@ import { NgForm } from '@angular/forms';
     BrowserModule, HttpClientModule,
     AppRoutingModule,FormsModule, ReactiveFormsModule, FlatpickrModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

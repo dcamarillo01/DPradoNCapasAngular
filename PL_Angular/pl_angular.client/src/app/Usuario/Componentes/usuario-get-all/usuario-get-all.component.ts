@@ -31,6 +31,8 @@ export class UsuarioGetAllComponent implements OnInit {
   apellidoMaterno!: string;
 
   busquedaAbierta : boolean = false;
+  token!: string | null;
+  decodedJWT!: any;
 
 
 
@@ -40,6 +42,12 @@ export class UsuarioGetAllComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllUsuarios();
+    this.token = localStorage.getItem('jwt_token');
+    this.decodedJWT = JSON.parse(window.atob(this.token!.split('.')[1]));
+    console.log(this.token)
+    console.log(this.decodedJWT)
+    console.log(this.decodedJWT["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"])
+
   }
 
   // if(usuario.nombre != null || usuario.apellidoPaterno != null || usuario.apellidoMaterno != null || usuario.rol?.idRol){
