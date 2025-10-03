@@ -5,7 +5,9 @@ import { Result } from '../../../Modelos/Result';
 import { HistorialPermiso } from '../../../Modelos/Permiso/Historial';
 import { Empleado } from '../../../Modelos/Empleado/Empleado';
 import { StatusPermiso } from '../../../Modelos/Permiso/StatusPermiso';  
+import { AuthService } from '../../../auth/servicio-authetication.service';
 import Swal from 'sweetalert2';
+import { parse } from 'jest-editor-support';
 
 
 @Component({
@@ -22,7 +24,7 @@ export class GetAllPermisosComponent implements OnInit {
 
 
 
-  constructor(private apiService: PermisoApiService){}
+  constructor(private apiService: PermisoApiService, private authService: AuthService){}
 
   ngOnInit(): void {
     
@@ -48,11 +50,9 @@ export class GetAllPermisosComponent implements OnInit {
     this.historial.statusPermiso.idStatusPermiso = idStatusPermiso;
     this.historial.observaciones = observaciones;
     this.historial.aprovoRechazo = new Empleado();
-    this.historial.aprovoRechazo.idEmpleado = 1;
+    this.historial.aprovoRechazo.idEmpleado = parseInt(this.authService.getUserId());
 
-    console.log(idPermiso);
-    console.log(idStatusPermiso);
-    console.log(observaciones);
+
 
     this.apiService.aprovarRechazar(this.historial).subscribe((data:Result)=>{
 

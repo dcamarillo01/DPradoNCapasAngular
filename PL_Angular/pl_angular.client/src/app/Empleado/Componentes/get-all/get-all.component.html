@@ -73,7 +73,9 @@
                                 <th>Departamento</th>
                                 <th>Salario</th>
                                 <th>Faltas</th>
-                                <th>Cuenta</th>
+                                <div *ngIf="hasRole('Administrador')">
+                                    <th>Cuenta</th>
+                                </div>
                                 <th>Editar</th>
                                 <th>Eliminar</th>
                             </tr>
@@ -91,7 +93,7 @@
                                 <td>{{empleado.departamento?.descripcion}}</td>
                                 <td>{{empleado.salarioBase}}</td>
                                 <td>{{empleado.noFaltas}}</td>
-                                <td>
+                                <td *ngIf="hasRole('Administrador')">
                                      <button class="btn btn-info" [routerLink]="['/UserProfile',empleado.idEmpleado,empleado.nombre, empleado.apellidoPaterno,empleado.departamento?.descripcion]" ><i class="bi bi-person-badge"></i></button>
                                 </td>
                                <td>

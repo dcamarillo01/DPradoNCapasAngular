@@ -1,5 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { AuthService } from '../../auth/auth.service';
+// import { AuthService } from '../../auth/auth.service';
+import {AuthService} from '../../auth/servicio-authetication.service';
+
 
 @Component({
   selector: 'app-header',
@@ -20,26 +22,28 @@ export class HeaderComponent implements OnInit{
   constructor(private authService: AuthService, private cdr : ChangeDetectorRef) { }
 
   isLoggedIn(): boolean {
-    return this.authService.isAuthenticated();
+    return this.authService.isLoggedIn();
   }
+
+
 
   ngOnInit(): void {
 
-     const tokenLocalStorage = localStorage.getItem("jwt_token");
+     const tokenLocalStorage = localStorage.getItem("token");
     if(tokenLocalStorage){
-      console.log(tokenLocalStorage)
-      // this.userData = JSON.parse(tokenLocalStorage);
     this.userData = JSON.parse(window.atob(tokenLocalStorage!.split('.')[1]));
 
     }
 
-      this.cdr.detectChanges();
+
+    this.authService.isLoggedIn();
+    this.cdr.detectChanges();
+
 
   }
 
    logout(): void {
-    localStorage.removeItem('jwt_token');
-    this.isLoggedIn(); // Check token after removal
+    this.authService.logout(); // Check token after removal
   }
 
   verificarToken(){
@@ -50,6 +54,11 @@ export class HeaderComponent implements OnInit{
 
   
   }
+
+   hasRole(role: string): boolean {
+    return this.authService.getUserRole() === role;
+  }
+
  
 
 

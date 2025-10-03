@@ -40,6 +40,13 @@ export class PermisoApiService {
     return this.http.post<Result>(url,historial);
 
   }
+
+  getBoss(): Observable<Result>{
+
+    const url = "http://localhost:5173/api/Permiso/GetBoss";
+    return this.http.get<Result>(url);
+
+  }
   
 
 }

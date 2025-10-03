@@ -3,6 +3,7 @@ import {Empleado} from '../../../Modelos/Empleado/Empleado';
 import {EmpleadoApiService} from '../../../Empleado/Services/empleado-api.service';
 import { ProfileAPIService } from '../../../UserPofile/Services/profile-api.service';
 import {Result} from '../../../Modelos/Result';
+import {AuthService} from '../../../auth/servicio-authetication.service';
 
 
 @Component({
@@ -32,7 +33,7 @@ export class EmpleadoGetAllComponent implements OnInit{
   busquedaAbierta : boolean = false;
 
 
-  constructor(private readonly apiService: EmpleadoApiService, private readonly profileApiService: ProfileAPIService){}
+  constructor(private readonly apiService: EmpleadoApiService, private readonly profileApiService: ProfileAPIService , private readonly authService: AuthService){}
 
   ngOnInit(): void {
 
@@ -54,6 +55,11 @@ export class EmpleadoGetAllComponent implements OnInit{
     this.apellidoMaterno = (event.target as HTMLInputElement).value;
     // this.usuario.nombre = this.nombre;
 
+  }
+
+  //Obtener Rol
+  hasRole(role: string): boolean {
+    return this.authService.getUserRole() === role;
   }
 
   getAll(){

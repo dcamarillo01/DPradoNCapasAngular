@@ -14,8 +14,9 @@ export class InicioComponent implements OnInit{
 
   ngOnInit(): void {
 
-    this.token = localStorage.getItem("jwt_token");
+    this.token = localStorage.getItem("token");
     this.decodedToken = JSON.parse(window.atob(this.token!.split('.')[1]));
+    console.log(this.decodedToken);
     this.userName = this.decodedToken["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"];
   }
 

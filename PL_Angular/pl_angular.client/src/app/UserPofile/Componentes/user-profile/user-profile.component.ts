@@ -5,8 +5,11 @@ import { UserProfile } from '../../../Modelos/Empleado/UserProfile';
 import { Result } from '../../../Modelos/Result';
 import { Empleado } from '../../../Modelos/Empleado/Empleado';
 import { Rol } from '../../../Modelos/Usuario/Rol';
-import { NgModel } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
+
+
 
 
 @Component({
@@ -31,12 +34,12 @@ export class UserProfileComponent implements OnInit {
 
 
 
-  constructor(private profileService: ProfileAPIService, private route: ActivatedRoute){}
+  constructor(private profileService: ProfileAPIService, private route: ActivatedRoute, private router: Router){}
 
   ngOnInit(): void {
 
     this.idEmpleado = this.route.snapshot.params['id'];
-  this.user.empleado = new Empleado();
+    this.user.empleado = new Empleado();
 
     this.user.empleado!.idEmpleado! = this.idEmpleado;
     this.nombre = this.route.snapshot.params['nombre'];
@@ -62,9 +65,18 @@ export class UserProfileComponent implements OnInit {
     this.profileService.crearCuenta(usuario).subscribe((data:Result)=>{
 
       if(data.correct){
-        alert("Se registro Usuario");
+        Swal.fire({
+          title: "Cuenta Creada",
+          text: "Se creo cuenta exitosamente.",
+          icon: "success"
+        });
+        this.router.navigate(['/Accoutns']);
       }else{
-        alert("No se pudo registrar Usuario")
+        Swal.fire({
+          title: "Error",
+          text: "Ocurrio un problema al crear cuenta.",
+          icon: "error"
+        });
       }
 
 

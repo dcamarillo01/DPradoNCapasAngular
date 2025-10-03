@@ -78,6 +78,20 @@ namespace PL_Angular.Server.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("GetBoss")]
+        public IActionResult GetBosses() {
+
+            var result = _permiso.GetBoss();
+            if (result.Correct)
+            {
+                return Ok(result);
+            }
+            else {
+                return BadRequest(result);
+            }
+        }
+
 
     }
 }

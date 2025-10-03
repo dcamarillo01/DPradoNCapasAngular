@@ -83,6 +83,19 @@
                                         <div *ngIf="motivo.errors.required">El motivo es obligatorio</div>
                                     </div>
                                 </div>
+                                <div class="row pb-2">
+                                    <label class="form-label">Jefe Directo</label>
+                                    <select name="jefe" class="form-select" [(ngModel)]="selectedJefe"
+                                    #jefe="ngModel" required [ngClass]="{'is-invalid': f.submitted && jefe.invalid}"
+                                    >
+                                    <option *ngFor="let jefe of jefes" [value]="jefe.idEmpleado">
+                                    {{ jefe.nombre }}
+                                    </option>
+                                    </select>
+                                    <div *ngIf="f.submitted && jefe.errors" class="invalid-feedback">
+                                        <div *ngIf="jefe.errors.required">Selecciona a tu jefe directo"></div>
+                                    </div>
+                                </div>
                              </div>
                              <div class="row justify-content-end">
                                 <div class="col-2">
